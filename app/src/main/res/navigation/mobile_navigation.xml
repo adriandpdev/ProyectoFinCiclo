@@ -22,4 +22,15 @@
         android:name="com.example.proyectofinciclo.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_calendario"
+        android:name="com.example.proyectofinciclo.ui.calendario.CalendarioFragment"
+        android:label="@string/title_calendario"
+        tools:layout="@layout/fragment_calendario" />
+    <fragment
+        android:id="@+id/navigation_perfil"
+        android:name="com.example.proyectofinciclo.ui.perfil.perfilFragment"
+        android:label="@string/title_perfil"
+        tools:layout="@layout/fragment_perfil" />
 </navigation>
