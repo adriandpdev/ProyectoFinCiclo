@@ -40,6 +40,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0-rc01'
     implementation 'org.twitter4j:twitter4j-core:4.0.7'
     implementation 'org.twitter4j:twitter4j-async:4.0.7'
+    implementation 'com.squareup.okhttp:okhttp:2.7.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:+'
     androidTestImplementation 'androidx.test.espresso:espresso-core:+'

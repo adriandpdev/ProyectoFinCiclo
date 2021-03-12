@@ -1,5 +1,15 @@
 package com.example.proyectofinciclo;
 
+import android.util.Log;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.AsynchronousServerSocketChannel;
+import java.nio.channels.AsynchronousSocketChannel;
+import java.nio.channels.CompletionHandler;
+import java.util.logging.Handler;
+
 import twitter4j.AsyncTwitter;
 import twitter4j.AsyncTwitterFactory;
 import twitter4j.TwitterListener;
@@ -23,11 +33,12 @@ public class ApiTwitter {
     private ConfigurationBuilder getConfiguration() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("qjWGbIhAjurvYLUF85BCwwDL7")
-                .setOAuthConsumerSecret("Jrm7eZ9nfBigAkVxYqBgGlFjUiKPi71WwZ6Dtbhl5Y0vATR4sY")
-                .setOAuthAccessToken("UWo1iyFMAvpT2RaC99zKpcvZPgxK7zCdPI7FvZGd")
-                .setOAuthAccessTokenSecret("jM1Y5gRz9EKHZilXxPLqpaoJN29OY3qcRZ79bcwtMhtES");
-
+                .setOAuthConsumerKey("PV12m2GaCoNOobrMyjXfv0IL6")
+                .setOAuthConsumerSecret("HevDhheeV8YGb0xPACoBlsbiaaMB2v7WpjR5m5WjwIvvOz7HF5")
+                .setOAuthAccessToken("958158007-aJuMnp0GbwQxMDsJe8Wysm5FvSnW6B09EuoqRCZ1")
+                .setOAuthAccessTokenSecret("lmFfJziny7CmpDAStriKn2Y7OZLaeSFe6Lx3aUMFyQGwx");
+        // Bearer token
+        // AAAAAAAAAAAAAAAAAAAAAG3eNQEAAAAA2h9UiLPEo4neluibsibBN8Cwmiw%3D0adp68s2Q2fLm1Y8aRRrf7d6Ty02bLge2Pg5J4N9a2pp0PFRjw
         return cb;
     }
 
