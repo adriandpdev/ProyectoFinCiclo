@@ -99,93 +99,92 @@ android:layout_marginTop="5dp">
         app:srcCompat="@drawable/ic_picture_placeholder_svg" />
 
 </RelativeLayout>
+    <!--
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/relLayButtons"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relLayUser"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/relLayButtons"
-    android:layout_width="match_parent"
-    android:layout_height="20dp"
-    android:layout_alignParentStart="true"
-    android:layout_below="@+id/relLayUser"
-    android:layout_marginTop="8dp"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <ImageView
-            android:id="@+id/ibReply"
-            style="@android:style/Widget.ImageButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:adjustViewBounds="false"
-            android:background="#00000000"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_reply_svg" />
-    </LinearLayout>
+            android:layout_weight="1">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+            <ImageView
+                android:id="@+id/ibReply"
+                style="@android:style/Widget.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="false"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_reply_svg" />
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/ivRetweet"
-            style="@android:style/Widget.ImageButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:adjustViewBounds="false"
-            android:background="#00000000"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_retweet_svg" />
+            android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/tvRetweets"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/ivRetweet"
+                style="@android:style/Widget.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="false"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_retweet_svg" />
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <ImageView
-            android:id="@+id/ivLoveTweet"
-            style="@android:style/Widget.ImageButton"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tvRetweets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:adjustViewBounds="false"
-            android:background="#00000000"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_heart_clear_light_blue_svg" />
+            android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/tvLikes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-    </LinearLayout>
-</LinearLayout>
+            <ImageView
+                android:id="@+id/ivLoveTweet"
+                style="@android:style/Widget.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="false"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_heart_clear_light_blue_svg" />
+
+            <TextView
+                android:id="@+id/tvLikes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+</LinearLayout> -->
 
 <View
     android:id="@+id/vtSeparator"
     android:layout_width="match_parent"
     android:layout_height="1dp"
-    android:layout_below="@+id/relLayButtons"
+    android:layout_below="@+id/relLayUser"
     android:layout_marginBottom="8dp"
     android:layout_marginTop="8dp"
     android:background="@color/black" />

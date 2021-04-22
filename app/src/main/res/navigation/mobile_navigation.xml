@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.proyectofinciclo.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_plantilla"
+        android:name="com.example.proyectofinciclo.ui.plantilla.PlantillaFragment"
+        android:label="@string/title_plantilla"
+        tools:layout="@layout/fragment_plantilla" />
 
     <fragment
         android:id="@+id/navigation_calendario"

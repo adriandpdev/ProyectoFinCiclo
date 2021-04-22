@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import twitter4j.*;
 
+
 public class TimelineTwitterFragment extends Fragment {
 
     public static final String SELECTED_STATUS = "SelectedStatus";

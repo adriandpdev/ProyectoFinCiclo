@@ -1,30 +1,23 @@
 package com.example.proyectofinciclo.timelineprueba;
 
 import android.content.Context;
-import android.util.Log;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofinciclo.R;
 
-import java.security.AccessControlContext;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
-import twitter4j.ResponseList;
 import twitter4j.Status;
 
 
@@ -70,31 +63,24 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.MyViewHold
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.tvUserName.setText(mDataset.get(position).getUser().getName()); //Nombre de usuario
         holder.tvScreenName.setText("@"+mDataset.get(position).getUser().getScreenName()); //Alias de usuario(@)
-        holder.tvBodyD.setText((CharSequence) mDataset.get(position).getText()); //Texto del tweet
+        holder.tvBodyD.setText(mDataset.get(position).getText()); //Texto del tweet
         holder.ivTweetedImage.setVisibility(View.GONE); //Ocultar fotos (CAMBIAR)
-        //mDataset.get(position).getCreatedAt().toString()
-        SimpleDateFormat df = new SimpleDateFormat("E L dd HH:mm:ss O yyyy") ;
-        //DateTimeFormatter tf = DateTimeFormatter.ofPattern("E L dd HH:mm:ss O yyyy");
-        try {
-            Date fecha = df.parse(mDataset.get(position).getCreatedAt().toString());
-            Date fechahoy = new Date();
-            fechahoy.getDate();
-            //ChronoUnit.DAYS.between(fecha,fechahoy);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        //LocalDate myDate = LocalDate.parse("Fri Mar 12 18:07:46 GMT+01:00 2021", df);
-        //LocalDate currentDate = LocalDate.now();
-        //long numberOFDays = ChronoUnit.DAYS.between(myDate, currentDate);
-        //System.out.println(String.format("The diff of days is %d",));
-
-
-        //holder.tvCreatedAtD.setText((CharSequence) mDataset.get(position).getCreatedAt());
-        Log.d("FECHA", "onBindViewHolder: "+ mDataset.get(position).getCreatedAt());
+        holder.tvCreatedAtD.setText(getRelativeTimeAgo(mDataset.get(position).getCreatedAt().toString()));
         String imageHttpAddress = mDataset.get(position).getUser().get400x400ProfileImageURL();
-
-        //String imageHttpAddress = "https://www.unionistascf.com/wp-content/uploads/2018/10/Escudo_Unionistas_Salamanca_peq.png";
         new LoadImage(holder.ivProfileImage).execute(imageHttpAddress);
+
+        // CARGAR IMAGENES
+        /*
+        if (tweet.mediaFound) {
+            holder.ivTweetedImage.setVisibility(View.VISIBLE);
+            Glide.with(context).load(tweet.media.urlHTTPS)
+                    .bitmapTransform(new RoundedCornersTransformation(context, 20, 0))
+                    .placeholder(R.drawable.ic_picture_placeholder_svg)
+                    .error(R.drawable.ic_picture_placeholder_svg)
+                    .into(holder.ivTweetedImage);
+        } else {
+            holder.ivTweetedImage.setVisibility(View.GONE);
+        }*/
 
         /*
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +95,23 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.MyViewHold
     @Override
     public int getItemCount() {
         return mDataset.size();
+    }
+
+    public static String getRelativeTimeAgo(String rawJsonDate) {
+        String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+        SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
+        sf.setLenient(true);
+
+        String relativeDate = "";
+        try {
+            long dateMillis = sf.parse(rawJsonDate).getTime();
+            relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
+                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return relativeDate;
     }
 
 }
