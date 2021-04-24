@@ -6,15 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.plantilla.PlantillaFragment">
 
+    <!-- #Todo Ajustar ancho de imagenes-->
     <androidx.recyclerview.widget.RecyclerView
 
         android:id="@+id/rv_jugadores"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp">
+        android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,31 +1,27 @@
 package com.example.proyectofinciclo.ui.calendario;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.proyectofinciclo.R;
-import com.example.proyectofinciclo.models.resul;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.proyectofinciclo.ApiService;
+import com.example.proyectofinciclo.R;
+import com.example.proyectofinciclo.Services.ConnectionService;
+import com.example.proyectofinciclo.res.ResCalendario;
+import com.google.android.material.snackbar.Snackbar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CalendarioFragment extends Fragment {
 
@@ -41,64 +37,50 @@ public class CalendarioFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_calendario, container, false);
-        List<resul> resultados = new ArrayList<resul>();
-        try {
-            InputStream archivo=getResources().openRawResource(R.raw.partidos);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(archivo));
-
-
-            String linea;
-            while((linea =bufferedReader.readLine())!= null){
-                String[] linea2 = linea.split("/");
-                String[] res = linea2[2].split("-");
-                resultados.add(new resul(linea2[0],"","",linea2[1],linea2[2],"1"));
-                Log.d("archivo", "onCreateView: "+linea);
-            }
-            archivo.close();
-            bufferedReader.close();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            InputStream archivo=getResources().openRawResource(R.raw.resultados);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(archivo));
-
-
-            String linea;
-            while((linea =bufferedReader.readLine())!= null){
-                String[] linea2 = linea.split("/");
-                String[] res = linea2[2].split("-");
-                resultados.add(new resul("",res[0],res[1],"","",""));
-                Log.d("archivo", "onCreateView: "+linea);
-            }
-            archivo.close();
-            bufferedReader.close();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        recyclerView = v.findViewById(R.id.rvResuls);
+        View view = inflater.inflate(R.layout.fragment_calendario, container, false);
+        recyclerView = view.findViewById(R.id.rvResuls);
         recyclerView.setHasFixedSize(true);
-        resulsAdapter = new ResulsAdapter(resultados,getContext());
-        recyclerView.setAdapter(resulsAdapter);
-        llm = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(llm);
-        return v;
+
+        ApiService apiService = ConnectionService.getApiService();
+        Call<ResCalendario> call = apiService.getCalendario();
+        call.enqueue(new Callback<ResCalendario>() {
+            @Override
+            public void onResponse(Call<ResCalendario> call, Response<ResCalendario> response) {
+                if (response.code()==200) {
+                    ResCalendario res = response.body();
+                    if(res.getEstado()!=200){
+                        donackbar("Code: " + response.code()+", Estado: "+res.getMensaje(), view );
+                        return;
+                    }else if(res.getEstado()==200){
+                        resulsAdapter = new ResulsAdapter(res.getPartidos(),getContext());
+                        recyclerView.setAdapter(resulsAdapter);
+                        llm = new LinearLayoutManager(getActivity());
+                        recyclerView.setLayoutManager(llm);
+                    }
+                }else{
+                    donackbar("Code: " + response.code()+", ERROR ", view );
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResCalendario> call, Throwable t) {
+                Log.d("DATOS", "FALLO");
+                donackbar(t.getMessage(), view);
+            }
+        });
+        return view;
+
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(CalendarioViewModel.class);
-        // TODO: Use the ViewModel
+    }
+
+    public void donackbar(String mess, View v){
+        Snackbar mSnackbar = Snackbar.make(v, mess, Snackbar.LENGTH_LONG);
+        mSnackbar.show();
     }
 
 }

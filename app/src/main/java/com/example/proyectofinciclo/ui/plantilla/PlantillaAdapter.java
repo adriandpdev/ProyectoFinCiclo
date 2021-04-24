@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,11 +25,9 @@ public class PlantillaAdapter extends RecyclerView.Adapter<PlantillaAdapter.MyVi
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public CardView mCardView;
         public ImageView imgjugador;
         public MyViewHolder(View v) {
             super(v);
-            mCardView = (CardView) v.findViewById(R.id.cvJug);
             imgjugador = v.findViewById(R.id.imgjugador);
         }
     }
@@ -56,9 +53,12 @@ public class PlantillaAdapter extends RecyclerView.Adapter<PlantillaAdapter.MyVi
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        // Cargamos el nombre
+
+        // Cargamos la foto
         String imageHttpAddress = mDataset.get(position).getImg();
         new LoadImage(holder.imgjugador).execute("https://res.adriandiarteprieto.tk/"+imageHttpAddress+".png");
-        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+        holder.imgjugador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*

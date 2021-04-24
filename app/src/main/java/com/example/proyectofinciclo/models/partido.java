@@ -23,7 +23,7 @@ public class jugador {
     }
 
     public String getapellidos() {
-        return apellidos;
+            return apellidos;
     }
     public void setapellidos(String apellidos) {
         this.apellidos = apellidos;
@@ -42,5 +42,4 @@ public class jugador {
     public void setImg(String img) {
         this.img = img;
     }
-
 }

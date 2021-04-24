@@ -42,7 +42,7 @@ public class DashboardFragment extends Fragment {
         List<Status> statuses = null;
         try {
             statuses = new LoadTimeline(view.getContext()).execute().get();
-            //statuses = (List<Status>) new LoadTimelineBackground(view.getContext()).execute().get();
+            //statuses = new LoadTimelineBackground(view.getContext()).execute().get();
             tweetsAdapter = new TweetsAdapter(statuses,context);
             recyclerView.setAdapter(tweetsAdapter);
             llm = new LinearLayoutManager(context);

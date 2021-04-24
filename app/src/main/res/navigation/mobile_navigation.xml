@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.proyectofinciclo.ui.home.HomeFragment"
+        android:name="com.example.proyectofinciclo.ui.dashboard.DashboardFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.proyectofinciclo.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_perfil"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
@@ -30,7 +30,12 @@
         tools:layout="@layout/fragment_calendario" />
     <fragment
         android:id="@+id/navigation_perfil"
-        android:name="com.example.proyectofinciclo.ui.perfil.perfilFragment"
+        android:name="com.example.proyectofinciclo.ui.perfil.PerfilFragment"
         android:label="@string/title_perfil"
         tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/navigation_tienda"
+        android:name="com.example.proyectofinciclo.ui.tienda.tiendaFragment"
+        android:label="@string/title_tienda"
+        tools:layout="@layout/fragment_tienda" />
 </navigation>

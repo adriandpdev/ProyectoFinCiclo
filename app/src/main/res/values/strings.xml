@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">ProyectoFinCiclo</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_plantilla">Plantilla</string>
-    <string name="title_calendario">Calendario</string>
-    <string name="title_perfil">Perfil</string>
-    <string name="title_activity_timelineprueba">Unionistas</string>
+    <string name="app_name" translatable="false">ProyectoFinCiclo</string>
+    <string name="title_home" translatable="false">Inicio</string>
+    <string name="title_tienda" translatable="false">Tienda</string>
+    <string name="title_plantilla" translatable="false">Plantilla</string>
+    <string name="title_calendario" translatable="false">Calendario</string>
+    <string name="title_perfil" translatable="false">Perfil</string>
+
+    <string name="title_activity_timelineprueba" translatable="false">Unionistas</string>
 
 </resources>
