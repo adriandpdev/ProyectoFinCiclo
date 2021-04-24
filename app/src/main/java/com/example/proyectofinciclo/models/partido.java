@@ -1,45 +1,43 @@
 package com.example.proyectofinciclo.models;
 
-public class jugador {
+public class partido {
 
-    private String numjug;
-    private String nombre;
-    private String apellidos;
-    private String posi;
-    private String img;
+    private String fecha, gloc, gvis, loc, vis, estadio;
 
-    public String getnumjug() {
-        return numjug;
+    public String getFecha() {
+        return fecha;
     }
-    public void setnumjug(String numjug) {
-        this.numjug = numjug;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
-
-    public String getnombre() {
-        return nombre;
+    public String getGloc() {
+        return gloc;
     }
-    public void setnombre(String nombre) {
-        this.nombre = nombre;
+    public void setGloc(String gloc) {
+        this.gloc = gloc;
     }
-
-    public String getapellidos() {
-            return apellidos;
+    public String getGvis() {
+        return gvis;
     }
-    public void setapellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setGvis(String gvis) {
+        this.gvis = gvis;
     }
-
-    public String getposi() {
-        return posi;
+    public String getLoc() {
+        return loc;
     }
-    public void setposi(String posi) {
-        this.posi = posi;
+    public void setLoc(String loc) {
+        this.loc = loc;
     }
-
-    public String getImg() {
-        return img;
+    public String getVis() {
+        return vis;
     }
-    public void setImg(String img) {
-        this.img = img;
+    public void setVis(String vis) {
+        this.vis = vis;
+    }
+    public String getEstadio() {
+        return estadio;
+    }
+    public void setEstadio(String estadio) {
+        this.estadio = estadio;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.proyectofinciclo.ui.perfil;
+package com.example.proyectofinciclo.ui.home;
 
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofinciclo.R;
+import com.example.proyectofinciclo.ui.perfil.PerfilViewModel;
 import com.github.redouane59.twitter.TwitterClient;
 import com.github.redouane59.twitter.dto.tweet.Tweet;
 import com.github.redouane59.twitter.signature.TwitterCredentials;
