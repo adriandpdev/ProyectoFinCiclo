@@ -64,7 +64,6 @@ public class CalendarioFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResCalendario> call, Throwable t) {
-                Log.d("DATOS", "FALLO");
                 donackbar(t.getMessage(), view);
             }
         });

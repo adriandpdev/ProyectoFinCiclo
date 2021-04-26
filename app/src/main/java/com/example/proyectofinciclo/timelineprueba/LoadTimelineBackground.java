@@ -41,17 +41,11 @@ public class LoadTimelineBackground extends AsyncTask<Void, Void, List<Status>> 
             statuses = null;
             try {
                 statuses = twitter.getUserTimeline(1665264812);
-                Log.e("INFO","Showing home timeline.");
-
                 for (twitter4j.Status status : statuses) {
-                    System.out.println(status.getUser().getName() + ":" + status.getText());
                     String url= "https://twitter.com/" + status.getUser().getScreenName() + "/status/"
                             + status.getId();
-                    Log.e("INFO","Above tweet URL : " + url);
                 }
-
                 return statuses;
-
 
             } catch (TwitterException e) {
                 Log.e("Error", "Exception: " + e.getMessage());

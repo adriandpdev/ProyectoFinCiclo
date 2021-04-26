@@ -11,6 +11,7 @@ public class jugador {
     public String getnumjug() {
         return numjug;
     }
+
     public void setnumjug(String numjug) {
         this.numjug = numjug;
     }
@@ -18,6 +19,7 @@ public class jugador {
     public String getnombre() {
         return nombre;
     }
+
     public void setnombre(String nombre) {
         this.nombre = nombre;
     }
@@ -25,6 +27,7 @@ public class jugador {
     public String getapellidos() {
         return apellidos;
     }
+
     public void setapellidos(String apellidos) {
         this.apellidos = apellidos;
     }
@@ -32,6 +35,7 @@ public class jugador {
     public String getposi() {
         return posi;
     }
+
     public void setposi(String posi) {
         this.posi = posi;
     }
@@ -39,6 +43,7 @@ public class jugador {
     public String getImg() {
         return img;
     }
+
     public void setImg(String img) {
         this.img = img;
     }

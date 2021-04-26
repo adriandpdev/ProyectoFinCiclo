@@ -63,7 +63,6 @@ public class PlantillaAdapter extends RecyclerView.Adapter<PlantillaAdapter.MyVi
             public void onClick(View view) {
                 /*
                 String currentValue = mDataset.get(position).getName();
-                Log.d("CardView", "CardView Clicked: " + currentValue.toString());
 
                 Intent intent = new Intent(context, detailsActivity.class);
                 intent.putExtra("position", mDataset.get(position).getEstadioId());

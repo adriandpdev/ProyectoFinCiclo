@@ -42,7 +42,6 @@ public class PlantillaFragment extends Fragment {
 
         ApiService apiService = ConnectionService.getApiService();
         Call<ResPlantilla> call = apiService.getPlantilla();
-        Log.d("DATOS", "REALIZANDO PETICION");
         call.enqueue(new Callback<ResPlantilla>() {
             @Override
             public void onResponse(Call<ResPlantilla> call, Response<ResPlantilla> response) {
@@ -52,7 +51,6 @@ public class PlantillaFragment extends Fragment {
                         donackbar("Code: " + response.code()+", Estado: "+res.getMensaje(), view );
                         return;
                     }else if(res.getEstado()==200){
-
                         userAdapter = new PlantillaAdapter(res.getjugadores(),getContext());
                         recyclerView.setAdapter(userAdapter);
                         llm = new LinearLayoutManager(getActivity());
@@ -63,7 +61,6 @@ public class PlantillaFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResPlantilla> call, Throwable t) {
-                Log.d("DATOS", "FALLO");
                 donackbar(t.getMessage(), view);
             }
         });

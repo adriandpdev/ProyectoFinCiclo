@@ -1,12 +1,12 @@
 package com.example.proyectofinciclo.res;
 
-import com.example.proyectofinciclo.models.jugador;
+import com.example.proyectofinciclo.models.equipo;
 
 import java.util.List;
 
-public class ResPlantilla {
+public class ResCalendario {
     private int estado;
-    private List<jugador> jugadores;
+    private List<equipo> equipos;
     private String mensaje;
 
     public int getEstado() {
@@ -25,12 +25,12 @@ public class ResPlantilla {
         this.mensaje = mensaje;
     }
 
-    public List<jugador> getjugadores() {
-        return jugadores;
+    public List<equipo> getEquipos() {
+        return equipos;
     }
 
-    public void setjugadores(List<jugador> jugadores) {
-        this.jugadores = jugadores;
+    public void setEquipos(List<equipo> equipos) {
+        this.equipos = equipos;
     }
 
 }

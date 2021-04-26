@@ -25,11 +25,12 @@ public class ResCalendario {
         this.mensaje = mensaje;
     }
 
-    public List<partido> getPartidos() { return partidos; }
+    public List<partido> getPartidos() {
+        return partidos;
+    }
 
     public void setPartidos(List<partido> partidos) {
         this.partidos = partidos;
     }
-
 
 }
