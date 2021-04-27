@@ -4,7 +4,7 @@ import com.example.proyectofinciclo.models.equipo;
 
 import java.util.List;
 
-public class ResCalendario {
+public class ResClasi {
     private int estado;
     private List<equipo> equipos;
     private String mensaje;

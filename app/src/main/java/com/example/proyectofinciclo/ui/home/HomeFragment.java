@@ -7,57 +7,68 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyectofinciclo.ApiService;
 import com.example.proyectofinciclo.R;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.tabs.TabLayout;
+import com.example.proyectofinciclo.Services.ConnectionService;
+import com.example.proyectofinciclo.res.ResCalendario;
+import com.google.android.material.snackbar.Snackbar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
 
     private HomeViewModel homeViewModel;
-    //////////////////////////////////////////
-    private AppBarLayout appBar;
-    private TabLayout tab;
-    private ViewPager viewPager;
+    private RecyclerView recyclerView;
+    private ResulsHomeAdapter resulsAdapter;
+    private LinearLayoutManager llm;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         //homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        recyclerView = view.findViewById(R.id.rvHomeResul);
+        recyclerView.setHasFixedSize(true);
 
-
-        /*tabLayout = v.findViewById(R.id.tabLayout);
-        viewPager = v.findViewById(R.id.viewPager);
-        tabtw = v.findViewById(R.id.tabtw);
-        tabnews = v.findViewById(R.id.tabnews);
-        pagerAdapter = new PagerController(getParentFragmentManager(),tabLayout.getTabCount());
-        viewPager.setAdapter(pagerAdapter);
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        ApiService apiService = ConnectionService.getApiService();
+        Call<ResCalendario> call = apiService.getCalendario();
+        call.enqueue(new Callback<ResCalendario>() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-                if(tab.getPosition()==0){
-                    pagerAdapter.notifyDataSetChanged();
-                }
-                if(tab.getPosition()==1){
-                    pagerAdapter.notifyDataSetChanged();
+            public void onResponse(Call<ResCalendario> call, Response<ResCalendario> response) {
+                if (response.code()==200) {
+                    ResCalendario res = response.body();
+                    if(res.getEstado()!=200){
+                        donackbar("Code: " + response.code()+", Estado: "+res.getMensaje(), view );
+                        return;
+                    }else if(res.getEstado()==200){
+
+                        resulsAdapter = new ResulsHomeAdapter(res.getPartidos(),getContext());
+                        recyclerView.setAdapter(resulsAdapter);
+                        llm = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+                        recyclerView.setLayoutManager(llm);
+                    }
+                }else{
+                    donackbar("Code: " + response.code()+", ERROR ", view );
                 }
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+            public void onFailure(Call<ResCalendario> call, Throwable t) {
+                donackbar(t.getMessage(), view);
             }
         });
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));*/
+
+
         return view;
+    }
+    public void donackbar(String mess, View v){
+        Snackbar mSnackbar = Snackbar.make(v, mess, Snackbar.LENGTH_LONG);
+        mSnackbar.show();
     }
 }

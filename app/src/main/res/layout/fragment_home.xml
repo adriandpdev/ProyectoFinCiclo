@@ -21,7 +21,6 @@
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:background="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -30,11 +29,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <TextView
-                        android:layout_width="2000dp"
+                    <androidx.recyclerview.widget.RecyclerView
                         android:layout_height="match_parent"
-                        android:text="RESULTADOS"
-                        android:textColor="@color/white"/>
+                        android:layout_width="wrap_content"
+                        android:id="@+id/rvHomeResul"
+                        />
                 </LinearLayout>
             </HorizontalScrollView>
 
@@ -204,7 +203,111 @@
                     app:layout_constraintEnd_toEndOf="parent"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinecenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/ivN4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/fotonoticia2"
+                        android:adjustViewBounds="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
+                    <TextView
+                        android:id="@+id/txTitleN4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="PLAN SEMANAL &#124; 19 &#8211; 25 de abril"
+                        android:maxLines="2"
+                        android:textAlignment="center"
+                        android:layout_margin="5dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@+id/txDateN4"
+                        app:layout_constraintTop_toBottomOf="@+id/ivN4"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/txDateN4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="20 abril, 2021 "
+                        android:layout_margin="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView5"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guidelinecenter"
+                app:layout_constraintTop_toBottomOf="@+id/cardView3" >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/ivN5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/fotonoticia3"
+                        android:adjustViewBounds="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txTitleN5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="JORNADA 21 &#124; Unionistas de Salamanca vence y se reengancha a la pelea por el ascenso a Segunda"
+                        android:maxLines="2"
+                        android:textAlignment="center"
+                        android:layout_margin="5dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@+id/txDateN5"
+                        app:layout_constraintTop_toBottomOf="@+id/ivN5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/txDateN5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="17 abril, 2021 "
+                        android:layout_margin="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
             <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
@@ -214,10 +317,10 @@
                 android:layout_marginLeft="5dp"
 
                 android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2"/>
+                app:layout_constraintTop_toBottomOf="@+id/cardView4"/>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView5"
+                android:id="@+id/cardViewtw"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
@@ -277,7 +380,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView4"
+                android:id="@+id/cardViewig"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_marginLeft="3dp"

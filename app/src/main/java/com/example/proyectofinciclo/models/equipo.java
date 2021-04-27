@@ -1,6 +1,6 @@
 package com.example.proyectofinciclo.models;
 
-public class resul {
+public class equipo {
     private String equi, id, puntos;
 
     public String getEqui() {
