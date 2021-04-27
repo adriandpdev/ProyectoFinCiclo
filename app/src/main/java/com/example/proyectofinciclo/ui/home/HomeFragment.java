@@ -27,6 +27,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private ResulsHomeAdapter resulsAdapter;
     private LinearLayoutManager llm;
+    private CardView btntw, btnig;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -34,10 +35,37 @@ public class HomeFragment extends Fragment {
         //homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.rvHomeResul);
+        btnig = view.findViewById(R.id.cardViewig);
+        btntw = view.findViewById(R.id.cardViewtw);
+
         recyclerView.setHasFixedSize(true);
 
         ApiService apiService = ConnectionService.getApiService();
-        Call<ResCalendario> call = apiService.getCalendario();
+
+        Call<ResNews> callnews = apiService.getNews();
+        callnews.enqueue(new Callback<ResNews>() {
+            @Override
+            public void onResponse(Call<ResNews> call, Response<ResNews> response) {
+                if (response.code()==200) {
+                    ResNews res = response.body();
+                    if(res.getEstado()!=200){
+                        donackbar("Code: " + response.code()+", Estado: "+res.getMensaje(), view );
+                        return;
+                    }else if(res.getEstado()==200){
+                        List<news> news = res.getNews();
+                    }
+                }else{
+                    donackbar("Code: " + response.code()+", ERROR ", view );
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResNews> call, Throwable t) {
+                donackbar(t.getMessage(), view);
+            }
+        });
+
+        Call<ResCalendario> call = apiService.getCalendarioHome();
         call.enqueue(new Callback<ResCalendario>() {
             @Override
             public void onResponse(Call<ResCalendario> call, Response<ResCalendario> response) {
@@ -63,7 +91,29 @@ public class HomeFragment extends Fragment {
                 donackbar(t.getMessage(), view);
             }
         });
+        btntw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                twFragment fr=new twFragment();
+                fr.setArguments(bn);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.nav_host_fragment,fr)
+                        .addToBackStack(null)
+                        .commit();
 
+            }
+        });
+        btnig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                igFragment fr=new igFragment();
+                fr.setArguments(bn);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.nav_host_fragment,fr)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         return view;
     }
