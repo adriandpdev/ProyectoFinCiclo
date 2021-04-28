@@ -2,6 +2,7 @@ package com.example.proyectofinciclo;
 
 import com.example.proyectofinciclo.res.PetLogin;
 import com.example.proyectofinciclo.res.ResCalendario;
+import com.example.proyectofinciclo.res.ResClasi;
 import com.example.proyectofinciclo.res.ResNews;
 import com.example.proyectofinciclo.res.ResPlantilla;
 import com.example.proyectofinciclo.res.ResUser;
@@ -21,6 +22,9 @@ public interface ApiService {
 
     @GET("calendariohome")
     Call<ResCalendario> getCalendarioHome();
+
+    @GET("clasi/2bf2")
+    Call<ResClasi> getClasi();
 
     @GET("noticias")
     Call<ResNews> getNews();

@@ -1,4 +1,4 @@
-package com.example.proyectofinciclo.ui.plantilla;
+package com.example.proyectofinciclo.ui.home;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
+public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyViewHolder>{
 
     private List<news> mDataset;
     private FragmentTransaction transaction;
@@ -43,15 +43,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public NewsAdapter(List<news> myDataset, Context context) {
+    public NewsListAdapter(List<news> myDataset, Context context) {
         this.context=context;
         mDataset = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public NewsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                            int viewType) {
+    public NewsListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                           int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list_news, parent, false);

@@ -15,7 +15,6 @@ import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.Services.ConnectionService;
 import com.example.proyectofinciclo.models.news;
 import com.example.proyectofinciclo.res.ResNews;
-import com.example.proyectofinciclo.ui.plantilla.NewsAdapter;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -25,10 +24,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class NewsFragment extends Fragment {
+public class NewsListFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private com.example.proyectofinciclo.ui.plantilla.NewsAdapter newsAdapter;
+    private NewsListAdapter newsAdapter;
     private List<news> resultadoSQL;
     private LinearLayoutManager llm;
 
@@ -50,7 +49,7 @@ public class NewsFragment extends Fragment {
                         donackbar("Code: " + response.code()+", Estado: "+res.getMensaje(), view );
                         return;
                     }else if(res.getEstado()==200){
-                        newsAdapter = new NewsAdapter(res.getNews(),getContext());
+                        newsAdapter = new NewsListAdapter(res.getNews(),getContext());
                         recyclerView.setAdapter(newsAdapter);
                         llm = new LinearLayoutManager(getActivity());
                         recyclerView.setLayoutManager(llm);

@@ -1,4 +1,4 @@
-package com.example.proyectofinciclo.ui.home;
+package com.example.proyectofinciclo.timelineprueba;
 
 import android.content.Context;
 import android.text.format.DateUtils;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.MyViewHolder>{
+public class TweetsAdapterHome extends RecyclerView.Adapter<TweetsAdapterHome.MyViewHolder>{
 
     private List<Tweet> mDataset;
     private FragmentTransaction transaction;
@@ -40,7 +40,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.MyViewHold
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public TweetsAdapter(List<Tweet> myDataset, Context context) {
+    public TweetsAdapterHome(List<Tweet> myDataset, Context context) {
         this.context=context;
         mDataset = myDataset;
     }
