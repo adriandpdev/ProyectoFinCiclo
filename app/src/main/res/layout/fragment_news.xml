@@ -9,7 +9,7 @@
     <!-- #Todo Ajustar ancho de imagenes-->
     <androidx.recyclerview.widget.RecyclerView
 
-        android:id="@+id/rv_jugadores"
+        android:id="@+id/rv_news"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

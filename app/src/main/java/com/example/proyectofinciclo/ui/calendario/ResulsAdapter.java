@@ -27,6 +27,7 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
     private List<partido> mDataset;
     private FragmentTransaction transaction;
     private Context context;
+    private boolean next;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -54,6 +55,7 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
     public ResulsAdapter(List<partido> myDataset, Context context) {
         this.context=context;
         mDataset = myDataset;
+        next = True;
     }
 
     // Create new views (invoked by the layout manager)
@@ -87,6 +89,10 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
             holder.tvResul.setText(mDataset.get(position).getGloc()+ " : "+ mDataset.get(position).getGvis());
             holder.tvTime.setText("FINALIZADO"); // #ToDo cambiar al minuto de partido
         }else{
+            if(next){
+                holder.mCardView.requestFocus();
+                next = false;
+            }
             String hora = new SimpleDateFormat("H : mm",new Locale("es","ES")).format(date);
             if(!hora.equals("0 : 00")){
                 holder.tvResul.setText(hora);
@@ -112,6 +118,12 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
 
             }
         });
+        if(mDataset.size()==position-1){
+            if(next){
+                holder.mCardView.requestFocus();
+                next = false;
+            }
+        }
     }
 
     @Override

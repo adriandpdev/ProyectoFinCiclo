@@ -1,12 +1,14 @@
 package com.example.proyectofinciclo;
 
+import com.example.proyectofinciclo.res.PetLogin;
 import com.example.proyectofinciclo.res.ResCalendario;
-import com.example.proyectofinciclo.res.ResPlantilla;
 import com.example.proyectofinciclo.res.ResNews;
+import com.example.proyectofinciclo.res.ResPlantilla;
 import com.example.proyectofinciclo.res.ResUser;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public interface ApiService {
 
@@ -18,14 +20,14 @@ public interface ApiService {
     Call<ResCalendario> getCalendario();
 
     @GET("calendariohome")
-    Call<resCalendario> getCalendarioHome();
+    Call<ResCalendario> getCalendarioHome();
 
     @GET("noticias")
-    Call<resNews> getNews();
+    Call<ResNews> getNews();
 
     @POST("login")
-    Call<resUser> getLogin();
+    Call<ResUser> getLogin(PetLogin pLogin);
 
     @POST("register")
-    Call<resUser> getRegister();
+    Call<ResUser> getRegister();
 }

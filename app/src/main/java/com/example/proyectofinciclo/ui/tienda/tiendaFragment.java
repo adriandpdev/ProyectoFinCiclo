@@ -30,6 +30,7 @@ public class tiendaFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tienda, container, false);
         webView = view.findViewById(R.id.webviewshop);
+        webView.loadUrl("www.unionistascf.com/tienda/es/");
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
@@ -38,7 +39,6 @@ public class tiendaFragment extends Fragment {
         });
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webView.loadUrl("www.unionistascf.com/tienda/es/");
         return view;
     }
 

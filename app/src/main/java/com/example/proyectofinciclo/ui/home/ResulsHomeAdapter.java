@@ -1,6 +1,7 @@
 package com.example.proyectofinciclo.ui.home;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,10 @@ public class ResulsHomeAdapter extends RecyclerView.Adapter<ResulsHomeAdapter.My
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+            // Cargar estadio
+            holder.tvResul.setText(mDataset.get(position).getEstadio());
+            holder.tvResul.setTextSize(12);
+            holder.tvResul.setTypeface(Typeface.DEFAULT);
         }
         // Cargar escudos
         String imageHttpAddresshome = mDataset.get(position).getLoc().replace(" ","");

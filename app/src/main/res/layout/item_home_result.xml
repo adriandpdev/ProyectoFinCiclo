@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="200dp"
+    android:layout_width="240dp"
     android:layout_height="75dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
@@ -11,13 +11,13 @@
 
         <androidx.cardview.widget.CardView
         android:id="@+id/cvResul"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="75dp"
-        app:cardBackgroundColor="#dddddd">
+        app:cardBackgroundColor="#dcdcdc">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/relLayUser"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_margin="3dp"
@@ -82,7 +82,7 @@
                 android:ellipsize="end"
                 android:text="\FINALIZADO"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline1" />

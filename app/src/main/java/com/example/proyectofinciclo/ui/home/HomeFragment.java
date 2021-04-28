@@ -1,11 +1,15 @@
 package com.example.proyectofinciclo.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,8 +17,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.proyectofinciclo.ApiService;
 import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.Services.ConnectionService;
+import com.example.proyectofinciclo.models.news;
 import com.example.proyectofinciclo.res.ResCalendario;
+import com.example.proyectofinciclo.res.ResNews;
+import com.example.proyectofinciclo.timelineprueba.LoadImage;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,7 +65,94 @@ public class HomeFragment extends Fragment {
                         donackbar("Code: " + response.code()+", Estado: "+res.getMensaje(), view );
                         return;
                     }else if(res.getEstado()==200){
+                        SimpleDateFormat sf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z", Locale.ENGLISH);
+                        sf.setLenient(true);
                         List<news> news = res.getNews();
+                        // Noticia 1
+                        CardView cv1 = view.findViewById(R.id.cardView1);
+                        ImageView img1 = view.findViewById(R.id.ivN1);
+                        TextView title1 = view.findViewById(R.id.txTitleN1);
+                        TextView date1 = view.findViewById(R.id.txDateN1);
+                        String imageHttpAddressaway1 = news.get(0).getImg();
+                        new LoadImage(img1).execute(imageHttpAddressaway1);
+                        title1.setText(news.get(0).getTitle());
+                        Date bddate1 = null;
+                        try {
+                            bddate1 = sf.parse(news.get(0).getDate()+"+02:00");
+                            String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(bddate1);
+                            date1.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        // Noticia 2
+                        CardView cv2 = view.findViewById(R.id.cardView2);
+                        ImageView img2 = view.findViewById(R.id.ivN2);
+                        TextView title2 = view.findViewById(R.id.txTitleN2);
+                        TextView date2 = view.findViewById(R.id.txDateN2);
+                        String imageHttpAddressaway2 = news.get(1).getImg();
+                        new LoadImage(img2).execute(imageHttpAddressaway2);
+                        title2.setText(news.get(1).getTitle());
+                        Date bddate2 = null;
+                        try {
+                            bddate2 = sf.parse(news.get(0).getDate()+"+02:00");
+                            String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(bddate2);
+                            date2.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        // Noticia 3
+                        CardView cv3 = view.findViewById(R.id.cardView3);
+                        ImageView img3 = view.findViewById(R.id.ivN3);
+                        TextView title3 = view.findViewById(R.id.txTitleN3);
+                        TextView date3 = view.findViewById(R.id.txDateN3);
+                        String imageHttpAddressaway3 = news.get(2).getImg();
+                        new LoadImage(img3).execute(imageHttpAddressaway3);
+                        title3.setText(news.get(2).getTitle());
+                        Date bddate3 = null;
+                        try {
+                            bddate3 = sf.parse(news.get(0).getDate()+"+02:00");
+                            String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(bddate3);
+                            date3.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        // Noticia 4
+                        CardView cv4 = view.findViewById(R.id.cardView4);
+                        ImageView img4 = view.findViewById(R.id.ivN4);
+                        TextView title4 = view.findViewById(R.id.txTitleN4);
+                        TextView date4 = view.findViewById(R.id.txDateN4);
+                        String imageHttpAddressaway4 = news.get(3).getImg();
+                        new LoadImage(img4).execute(imageHttpAddressaway4);
+                        title4.setText(news.get(3).getTitle());
+                        Date bddate4 = null;
+                        try {
+                            bddate4 = sf.parse(news.get(0).getDate()+"+02:00");
+                            String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(bddate4);
+                            date4.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        // Noticia 5
+                        CardView cv5 = view.findViewById(R.id.cardView5);
+                        ImageView img5 = view.findViewById(R.id.ivN5);
+                        TextView title5 = view.findViewById(R.id.txTitleN5);
+                        TextView date5 = view.findViewById(R.id.txDateN5);
+                        String imageHttpAddressaway5 = news.get(4).getImg();
+                        new LoadImage(img5).execute(imageHttpAddressaway5);
+                        title5.setText(news.get(4).getTitle());
+                        Date bddate5 = null;
+                        try {
+                            bddate5 = sf.parse(news.get(0).getDate()+"+02:00");
+                            String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(bddate5);
+                            date5.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 }else{
                     donackbar("Code: " + response.code()+", ERROR ", view );
@@ -88,30 +188,31 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResCalendario> call, Throwable t) {
+                Log.d("ERROR", "onFailure: "+t.getMessage());
                 donackbar(t.getMessage(), view);
             }
         });
         btntw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                twFragment fr=new twFragment();
-                fr.setArguments(bn);
+                /*twFragment fr=new twFragment();
+                //fr.setArguments(bn);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.nav_host_fragment,fr)
                         .addToBackStack(null)
                         .commit();
-
+*/
             }
         });
         btnig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                igFragment fr=new igFragment();
-                fr.setArguments(bn);
+                /*igFragment fr=new igFragment();
+                //fr.setArguments(bn);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.nav_host_fragment,fr)
                         .addToBackStack(null)
-                        .commit();
+                        .commit();*/
             }
         });
 

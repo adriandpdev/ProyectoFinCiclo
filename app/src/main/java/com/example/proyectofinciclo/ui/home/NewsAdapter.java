@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,9 @@ import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.models.news;
 import com.example.proyectofinciclo.timelineprueba.LoadImage;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -31,10 +35,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
         public TextView tvdate;
         public MyViewHolder(View v) {
             super(v);
-            imgnews = v.findViewById(R.id.imgnews);
-            tvtitle = v.findViewById(R.id.tvtitle);
-            tvdesc = v.findViewById(R.id.tvdesc);
-            tvdate = v.findViewById(R.id.tvdate);
+            imgnews = v.findViewById(R.id.ivNlist);
+            tvtitle = v.findViewById(R.id.txTitleNlist);
+            //tvdesc = v.findViewById(R.id.txDescNlist);
+            tvdate = v.findViewById(R.id.txDateNlist);
         }
     }
 
@@ -60,15 +64,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         // Cargamos el titulo
-        holder.tvtitle = mDataset.get(position).getTitle();
+        holder.tvtitle.setText(mDataset.get(position).getTitle());
         // Cargamos la noticia
-        holder.tvdesc = mDataset.get(position).getDesc();
+        //holder.tvdesc.setText(mDataset.get(position).getDesc());
         // Cargamos la fecha
         SimpleDateFormat sf = new SimpleDateFormat("yyyy MM dd"); // #ToDo revisar formato
         sf.setLenient(true);
         Date date = null;
         try {
-            date = sf.parse(mDataset.get(position).getFecha());
+            date = sf.parse(mDataset.get(position).getDate());
             String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM").format(date);
             holder.tvdate.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
         } catch (ParseException e) {

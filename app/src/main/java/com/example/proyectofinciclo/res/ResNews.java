@@ -1,12 +1,12 @@
 package com.example.proyectofinciclo.res;
 
-import com.example.proyectofinciclo.models.equipo;
+import com.example.proyectofinciclo.models.news;
 
 import java.util.List;
 
-public class ResClasi {
+public class ResNews {
     private int estado;
-    private List<equipo> equipos;
+    private List<news> news;
     private String mensaje;
 
     public int getEstado() {
@@ -25,12 +25,12 @@ public class ResClasi {
         this.mensaje = mensaje;
     }
 
-    public List<equipo> getEquipos() {
-        return equipos;
+    public List<news> getNews() {
+        return news;
     }
 
-    public void setEquipos(List<equipo> equipos) {
-        this.equipos = equipos;
+    public void setNews(List<news> news) {
+        this.news = news;
     }
 
 }

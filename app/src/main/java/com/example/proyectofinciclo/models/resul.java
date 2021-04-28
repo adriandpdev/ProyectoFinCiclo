@@ -1,38 +1,63 @@
 package com.example.proyectofinciclo.models;
 
-public class user {
-    private String id, idsocio, name, email;
-
-    public String getId() {
-        return id;
+public class resul {
+    public resul(String date, String homegol, String awaygol, String homename, String awayname, String penals) {
+        setDate(date);
+        setHomegol(homegol);
+        setAwaygol(awaygol);
+        setHomename(homename);
+        setAwayname(awayname);
+        setPenals(penals);
     }
 
-    public void setId(String id) {
-        this.id = id;
+    private String date, homegol, awaygol, homename, awayname, penals;
+
+    public String getDate() {
+        return date;
     }
 
-    public String getIdSocio() {
-        return idsocio;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public void setIdSocio(String idsocio) {
-        this.idsocio = idsocio;
+    public String getHomegol() {
+        return homegol;
     }
 
-    public String getName() {
-        return name;
+    public void setHomegol(String homegol) {
+        this.homegol = homegol;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getAwaygol() {
+        return awaygol;
     }
 
-    public String getEmail() {
-        return email;
+    public void setAwaygol(String awaygol) {
+        this.awaygol = awaygol;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getHomename() {
+        return homename;
+    }
+
+    public void setHomename(String homename) {
+        this.homename = homename;
+    }
+
+    public String getAwayname() {
+        return awayname;
+    }
+
+    public void setAwayname(String awayname) {
+        this.awayname = awayname;
+    }
+
+    public String getPenals() {
+        return penals;
+    }
+
+    public void setPenals(String penals) {
+        this.penals = penals;
     }
 
 }

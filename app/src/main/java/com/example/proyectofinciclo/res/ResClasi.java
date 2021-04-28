@@ -1,12 +1,12 @@
 package com.example.proyectofinciclo.res;
 
-import com.example.proyectofinciclo.models.User;
+import com.example.proyectofinciclo.models.equipo;
 
 import java.util.List;
 
-public class ResUser {
+public class ResClasi {
     private int estado;
-    private List<User> user;
+    private List<equipo> equipos;
     private String mensaje;
 
     public int getEstado() {
@@ -25,12 +25,12 @@ public class ResUser {
         this.mensaje = mensaje;
     }
 
-    public List<User> getUser() {
-        return user;
+    public List<equipo> getEquipos() {
+        return equipos;
     }
 
-    public void setUser(List<User> user) {
-        this.user = user;
+    public void setEquipos(List<equipo> equipos) {
+        this.equipos = equipos;
     }
 
 }

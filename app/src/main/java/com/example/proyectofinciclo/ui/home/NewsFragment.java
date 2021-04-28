@@ -1,7 +1,6 @@
-package com.example.proyectofinciclo.ui.plantilla;
+package com.example.proyectofinciclo.ui.home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.proyectofinciclo.ApiService;
 import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.Services.ConnectionService;
-import com.example.proyectofinciclo.models.jugador;
+import com.example.proyectofinciclo.models.news;
 import com.example.proyectofinciclo.res.ResNews;
+import com.example.proyectofinciclo.ui.plantilla.NewsAdapter;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -27,9 +27,8 @@ import retrofit2.Response;
 
 public class NewsFragment extends Fragment {
 
-    private PlantillaViewModel mViewModel;
     private RecyclerView recyclerView;
-    private NewsAdapter newsAdapter;
+    private com.example.proyectofinciclo.ui.plantilla.NewsAdapter newsAdapter;
     private List<news> resultadoSQL;
     private LinearLayoutManager llm;
 
@@ -41,7 +40,7 @@ public class NewsFragment extends Fragment {
         resultadoSQL = null;
 
         ApiService apiService = ConnectionService.getApiService();
-        Call<ResNews> call = apiService.getPlantilla();
+        Call<ResNews> call = apiService.getNews();
         call.enqueue(new Callback<ResNews>() {
             @Override
             public void onResponse(Call<ResNews> call, Response<ResNews> response) {
