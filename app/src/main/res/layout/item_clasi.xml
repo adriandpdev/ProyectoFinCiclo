@@ -13,17 +13,18 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvResul"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
 
         app:cardBackgroundColor="#dddddd">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/relLayUser"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_margin="8dp"
             android:clickable="false">
+
 
             <TextView
                 android:id="@+id/tvPosi"
@@ -33,6 +34,7 @@
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline1"
@@ -44,12 +46,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="75dp" />
+                app:layout_constraintGuide_percent="0.1" />
 
             <ImageView
                 android:id="@+id/ivEscudo"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:adjustViewBounds="false"
                 android:clickable="true"
                 android:src="@drawable/escudonull"
@@ -68,7 +70,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivEscudo"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -79,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.8"/>
+                app:layout_constraintGuide_percent="0.85"/>
 
 
             <TextView
@@ -90,6 +92,7 @@
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

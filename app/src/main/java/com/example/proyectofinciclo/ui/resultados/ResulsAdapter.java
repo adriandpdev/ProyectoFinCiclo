@@ -1,7 +1,8 @@
-package com.example.proyectofinciclo.ui.calendario;
+package com.example.proyectofinciclo.ui.resultados;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofinciclo.R;
@@ -38,8 +41,10 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
         public TextView txtaway;
         public TextView txtfecha;
         public ImageView awayimg,homeimg;
+        public View view;
         public MyViewHolder(View v) {
             super(v);
+            view = v;
             mCardView = (CardView) v.findViewById(R.id.cvResul);
             tvResul = v.findViewById(R.id.tvResul);
             tvTime = v.findViewById(R.id.tvTime);
@@ -55,7 +60,7 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
     public ResulsAdapter(List<partido> myDataset, Context context) {
         this.context=context;
         mDataset = myDataset;
-        next = True;
+        next = true;
     }
 
     // Create new views (invoked by the layout manager)
@@ -74,6 +79,7 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         // Formato a fecha y hora
+        final NavController navController = Navigation.findNavController(holder.view);
         SimpleDateFormat sf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z", Locale.ENGLISH);
         sf.setLenient(true);
         Date date = null;
@@ -115,7 +121,14 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Bundle bundle = new Bundle();
+                bundle.putString("date", holder.txtfecha.getText().toString());
+                bundle.putString("resul", mDataset.get(position).getGloc()+ " : "+ mDataset.get(position).getGvis());
+                bundle.putString("min", holder.tvTime.getText().toString());
+                bundle.putString("loc", mDataset.get(position).getLoc());
+                bundle.putString("vis", mDataset.get(position).getVis());
+                bundle.putString("estadio", mDataset.get(position).getEstadio());
+                navController.navigate(R.id.fragment_details_match);
             }
         });
         if(mDataset.size()==position-1){

@@ -1,4 +1,4 @@
-package com.example.proyectofinciclo.ui.calendario;
+package com.example.proyectofinciclo.ui.resultados;
 
 import androidx.lifecycle.ViewModel;
 

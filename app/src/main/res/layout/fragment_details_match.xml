@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout2"
+    android:id="@+id/fragment_details_match"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.calendario.CalendarioFragment">
+    tools:context=".ui.resultados.MatchDetailsFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvResul"
@@ -140,7 +140,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
-            <!-- #ToDo VIEWER PAGE WITH TAB LAYOUT -->
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabTextColor="@color/gray"
+                    android:theme="@style/AppTheme.TabLayout"/>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

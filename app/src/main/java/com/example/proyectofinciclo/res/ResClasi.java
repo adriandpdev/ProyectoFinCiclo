@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ResClasi {
     private int estado;
-    private List<equipo> equipos;
+    private List<equipo> clasi;
     private String mensaje;
 
     public int getEstado() {
@@ -26,11 +26,11 @@ public class ResClasi {
     }
 
     public List<equipo> getEquipos() {
-        return equipos;
+        return clasi;
     }
 
-    public void setEquipos(List<equipo> equipos) {
-        this.equipos = equipos;
+    public void setEquipos(List<equipo> clasi) {
+        this.clasi = clasi;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.proyectofinciclo.ui.home;
+package com.example.proyectofinciclo.timelineprueba;
 
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -24,7 +24,7 @@ import java.util.List;
 public class pruebasTimelineFragment extends Fragment {
 
     private PerfilViewModel mViewModel;
-    private TweetsAdapter tweetsAdapter;
+    private TweetsAdapterHome tweetsAdapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager llm;
     public static pruebasTimelineFragment newInstance() {
@@ -48,7 +48,7 @@ public class pruebasTimelineFragment extends Fragment {
         recyclerView = view.findViewById(R.id.RVtimeline);
         recyclerView.setHasFixedSize(true);
 
-        tweetsAdapter = new TweetsAdapter(tweets,view.getContext());
+        tweetsAdapter = new TweetsAdapterHome(tweets,view.getContext());
         recyclerView.setAdapter(tweetsAdapter);
         llm = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(llm);

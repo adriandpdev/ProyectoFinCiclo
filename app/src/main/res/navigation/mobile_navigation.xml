@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.proyectofinciclo.ui.dashboard.DashboardFragment"
-        android:label="@string/title_perfil"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
         android:id="@+id/navigation_plantilla"
         android:name="com.example.proyectofinciclo.ui.plantilla.PlantillaFragment"
         android:label="@string/title_plantilla"
@@ -25,9 +19,9 @@
 
     <fragment
         android:id="@+id/navigation_calendario"
-        android:name="com.example.proyectofinciclo.ui.calendario.CalendarioFragment"
-        android:label="@string/title_calendario"
-        tools:layout="@layout/fragment_calendario" />
+        android:name="com.example.proyectofinciclo.ui.resultados.ResultadosFragment"
+        android:label="@string/title_resultados"
+        tools:layout="@layout/fragment_resultados" />
     <fragment
         android:id="@+id/navigation_perfil"
         android:name="com.example.proyectofinciclo.ui.perfil.PerfilFragment"
@@ -38,4 +32,35 @@
         android:name="com.example.proyectofinciclo.ui.tienda.tiendaFragment"
         android:label="@string/title_tienda"
         tools:layout="@layout/fragment_tienda" />
+    <fragment
+        android:id="@+id/twFragment"
+        android:name="com.example.proyectofinciclo.ui.home.twFragment"
+        android:label="Twitter" />
+    <fragment
+        android:id="@+id/newsListFragment"
+        android:name="com.example.proyectofinciclo.ui.home.NewsListFragment"
+        android:label="Noticias recientes" />
+    <fragment
+        android:id="@+id/newsDetailsFragment"
+        android:name="com.example.proyectofinciclo.ui.home.NewsDetailsFragment"
+        android:label="En detalle" />
+    <fragment
+        android:id="@+id/igFragment"
+        android:name="com.example.proyectofinciclo.ui.home.igFragment"
+        android:label="Instagram"
+        tools:layout="@layout/fragment_ig" />
+    <fragment
+        android:id="@+id/clasiFragment"
+        android:name="com.example.proyectofinciclo.ui.resultados.ClasiFragment"
+        android:label="ClasiFragment" />
+    <fragment
+        android:id="@+id/wvnewsFragment"
+        android:name="com.example.proyectofinciclo.ui.home.wvnewsFragment"
+        android:label="fragment_web"
+        tools:layout="@layout/fragment_web" />
+    <fragment
+        android:id="@+id/calendarioFragment"
+        android:name="com.example.proyectofinciclo.ui.resultados.CalendarioFragment"
+        android:label="fragment_details_match"
+        tools:layout="@layout/fragment_details_match" />
 </navigation>

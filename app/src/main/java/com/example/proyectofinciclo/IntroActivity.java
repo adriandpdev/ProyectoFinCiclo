@@ -16,7 +16,7 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        video=findViewById(R.id.videoView);
+        video = findViewById(R.id.videoView);
         String path = "android.resource://" + getPackageName() + "/" + R.raw.intro;
         video.setVideoURI(Uri.parse(path));
         video.start();

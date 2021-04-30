@@ -3,10 +3,9 @@
     <string name="title_home">Inicio</string>
     <string name="title_tienda">Tienda</string>
     <string name="title_plantilla">Plantilla</string>
-    <string name="title_calendario">Calendario</string>
+    <string name="title_resultados">Resultados</string>
     <string name="title_perfil">Perfil</string>
 
-    <string name="title_activity_timelineprueba">Unionistas</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_intro">Intro</string>
 

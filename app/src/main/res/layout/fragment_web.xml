@@ -4,14 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.NewsListFragment">
+    tools:context=".ui.home.wvnewsFragment">
 
-    <!-- #Todo Ajustar ancho de imagenes-->
-    <androidx.recyclerview.widget.RecyclerView
-
-        android:id="@+id/rv_news"
+    <WebView
+        android:id="@+id/webviewnews"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

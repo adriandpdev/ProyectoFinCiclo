@@ -1,4 +1,4 @@
-package com.example.proyectofinciclo.ui.calendario;
+package com.example.proyectofinciclo.ui.resultados;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -63,19 +63,12 @@ public class ClasiAdapter extends RecyclerView.Adapter<ClasiAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         // Cargar datos
-        holder.tvPosi.setText(position+1);
+        holder.tvPosi.setText(position+1+"");
         holder.tvEqui.setText(mDataset.get(position).getEqui());
         holder.tvPuntos.setText(mDataset.get(position).getPuntos());
         // Cargar escudo
         String imageHttpAddresshome = mDataset.get(position).getEqui().replace(" ","");
         new LoadImage(holder.ivEscudo).execute("https://res.adriandiarteprieto.tk/escudos/"+imageHttpAddresshome+".png");
-        // Onclic cardview
-        holder.mCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     @Override

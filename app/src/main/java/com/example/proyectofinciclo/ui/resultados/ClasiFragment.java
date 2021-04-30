@@ -1,4 +1,4 @@
-package com.example.proyectofinciclo.ui.calendario;
+package com.example.proyectofinciclo.ui.resultados;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

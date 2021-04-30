@@ -1,6 +1,7 @@
 package com.example.proyectofinciclo.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,26 +12,34 @@ import android.webkit.WebViewClient;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.ui.perfil.PerfilViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
-public class twFragment extends Fragment {
+public class wvnewsFragment extends Fragment {
+
 
     private PerfilViewModel mViewModel;
     private WebView webView;
-    public static twFragment newInstance() {
-        return new twFragment();
+    public String id;
+    public static wvnewsFragment newInstance() {
+        return new wvnewsFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tienda, container, false);
-        webView = view.findViewById(R.id.webviewshop);
+        View view = inflater.inflate(R.layout.fragment_web, container, false);
+        Bundle data = this.getArguments();
+        if(data != null) {
+            id = data.getString("id");
+        }else{
+            id = "";
+        }
+        webView = view.findViewById(R.id.webviewnews);
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
@@ -39,10 +48,8 @@ public class twFragment extends Fragment {
         });
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webView.loadUrl("www.twitter.com/unionistascf/");
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+        Log.d("TAG", "onCreateView: "+id);
+        webView.loadUrl("https://www.unionistascf.com/?p="+id);
         return view;
     }
 
@@ -50,7 +57,10 @@ public class twFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(PerfilViewModel.class);
-
     }
 
+    public void donackbar(String mess, View v){
+        Snackbar mSnackbar = Snackbar.make(v, mess, Snackbar.LENGTH_LONG);
+        mSnackbar.show();
+    }
 }

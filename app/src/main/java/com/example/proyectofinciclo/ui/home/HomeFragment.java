@@ -5,12 +5,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,15 +46,48 @@ public class HomeFragment extends Fragment {
     private ResulsHomeAdapter resulsAdapter;
     private LinearLayoutManager llm;
     private CardView btntw, btnig;
+    private Button btnnews;
+    private HorizontalScrollView hsv;
 
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        final NavController navController = Navigation.findNavController(view);
+        btnnews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.newsListFragment);
+            }
+        });
+        btntw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.twFragment);
+
+            }
+        });
+        btnig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.igFragment);
+            }
+        });
+
+
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         //homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
         recyclerView = view.findViewById(R.id.rvHomeResul);
         btnig = view.findViewById(R.id.cardViewig);
         btntw = view.findViewById(R.id.cardViewtw);
+        btnnews = view.findViewById(R.id.btnnewlist);
+        hsv = view.findViewById(R.id.horizontalScrollView);
 
         recyclerView.setHasFixedSize(true);
 
@@ -77,13 +115,33 @@ public class HomeFragment extends Fragment {
                         new LoadImage(img1).execute(imageHttpAddressaway1);
                         title1.setText(news.get(0).getTitle());
                         Date bddate1 = null;
+                        String formateddate = null;
                         try {
                             bddate1 = sf.parse(news.get(0).getDate()+"+02:00");
                             String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(bddate1);
-                            date1.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+                            formateddate = fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length());
+                            date1.setText(formateddate);
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
+                        String finalFormateddate = formateddate;
+                        cv1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                NewsDetailsFragment ndf=new NewsDetailsFragment();
+                                Bundle data = new Bundle();
+                                data.putString("id",news.get(0).getId());
+                                data.putString("title",news.get(0).getTitle());
+                                data.putString("desc",news.get(0).getDesc());
+                                data.putString("date", finalFormateddate);
+                                data.putString("img",news.get(0).getImg());
+                                ndf.setArguments(data);
+                                getActivity().getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.nav_host_fragment,ndf)
+                                        .addToBackStack(null)
+                                        .commit();
+                            }
+                        });
 
                         // Noticia 2
                         CardView cv2 = view.findViewById(R.id.cardView2);
@@ -180,6 +238,7 @@ public class HomeFragment extends Fragment {
                         recyclerView.setAdapter(resulsAdapter);
                         llm = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
                         recyclerView.setLayoutManager(llm);
+                        hsv.smoothScrollTo(410, 0);
                     }
                 }else{
                     donackbar("Code: " + response.code()+", ERROR ", view );
@@ -192,29 +251,7 @@ public class HomeFragment extends Fragment {
                 donackbar(t.getMessage(), view);
             }
         });
-        btntw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*twFragment fr=new twFragment();
-                //fr.setArguments(bn);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment,fr)
-                        .addToBackStack(null)
-                        .commit();
-*/
-            }
-        });
-        btnig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*igFragment fr=new igFragment();
-                //fr.setArguments(bn);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment,fr)
-                        .addToBackStack(null)
-                        .commit();*/
-            }
-        });
+
 
         return view;
     }

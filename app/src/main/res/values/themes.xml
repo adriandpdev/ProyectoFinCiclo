@@ -1,4 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme.TabLayout" parent="Widget.Design.TabLayout">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/gray</item>
+        <item name="tabBackground">@color/black</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+        <item name="tabTextColor">@color/white</item>
+
+
+
+    </style>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
@@ -18,4 +28,6 @@
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
+
+
 </resources>
