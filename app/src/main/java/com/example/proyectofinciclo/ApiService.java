@@ -8,7 +8,9 @@ import com.example.proyectofinciclo.res.ResPlantilla;
 import com.example.proyectofinciclo.res.ResUser;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface ApiService {
@@ -29,8 +31,11 @@ public interface ApiService {
     @GET("noticias")
     Call<ResNews> getNews();
 
-    @POST("login")
-    Call<ResUser> getLogin(PetLogin pLogin);
+    @Headers({"Accept: application/json"})
+    @POST("auth/login")
+    Call<ResUser> getLogin(
+            @Body PetLogin body
+    );
 
     @POST("register")
     Call<ResUser> getRegister();

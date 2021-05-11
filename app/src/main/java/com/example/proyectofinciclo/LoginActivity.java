@@ -18,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     private static Context context;
     public String user="", pass="";
     public Button btnlogin;
@@ -29,11 +29,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btnlogin = findViewById(R.id.btn_iniciar_sesion);
-        btnlogin.setOnClickListener((View.OnClickListener) this);
+        btnlogin.setOnClickListener(this);
         txtuser = findViewById(R.id.et_user);
         txtpass= findViewById(R.id.et_contrasena);
     }
 
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_iniciar_sesion:
@@ -46,14 +47,17 @@ public class LoginActivity extends AppCompatActivity {
                         public void onResponse(Call<ResUser> call, Response<ResUser> response) {
                             if (response.code()==200) {
                                 ResUser res = response.body();
-                                if(res.getEstado()==1){
+                                if(res.getEstado()==200){
                                     //guardarsesion();
                                     Intent intent = new Intent(v.getContext(), MainActivity.class);
                                     startActivity(intent);
+                                    finish();
                                 }else{
                                     donackbar("Code: " + response.code()+", Estado: "+res.getMensaje(), v);
                                     return;
                                 }
+                            }else{
+                                donackbar("Error "+response.code(),v);
                             }
                         }
 
@@ -78,4 +82,6 @@ public class LoginActivity extends AppCompatActivity {
         Snackbar mSnackbar = Snackbar.make(v, mess, Snackbar.LENGTH_LONG);
         mSnackbar.show();
     }
+
+
 }

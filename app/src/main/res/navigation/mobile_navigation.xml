@@ -21,7 +21,11 @@
         android:id="@+id/navigation_calendario"
         android:name="com.example.proyectofinciclo.ui.resultados.ResultadosFragment"
         android:label="@string/title_resultados"
-        tools:layout="@layout/fragment_resultados" />
+        tools:layout="@layout/fragment_resultados" >
+        <action
+            android:id="@+id/action_navigation_calendario_to_calendarioFragment"
+            app:destination="@id/calendarioFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_perfil"
         android:name="com.example.proyectofinciclo.ui.perfil.PerfilFragment"
@@ -56,11 +60,11 @@
     <fragment
         android:id="@+id/wvnewsFragment"
         android:name="com.example.proyectofinciclo.ui.home.wvnewsFragment"
-        android:label="fragment_web"
+        android:label="Versión web"
         tools:layout="@layout/fragment_web" />
     <fragment
         android:id="@+id/calendarioFragment"
-        android:name="com.example.proyectofinciclo.ui.resultados.CalendarioFragment"
+        android:name="com.example.proyectofinciclo.ui.resultados.details.MatchDetailsFragment"
         android:label="fragment_details_match"
         tools:layout="@layout/fragment_details_match" />
 </navigation>

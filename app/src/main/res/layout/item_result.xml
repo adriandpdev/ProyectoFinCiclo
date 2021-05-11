@@ -34,15 +34,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_margin="8dp"
-            android:clickable="false">
+            android:layout_margin="8dp">
 
             <ImageView
                 android:id="@+id/ivHomeTeam"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:adjustViewBounds="false"
-                android:clickable="true"
                 android:src="@drawable/escudonull"
                 app:layout_constraintEnd_toStartOf="@+id/guideline1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +50,6 @@
                 android:id="@+id/tvHomeTeam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
                 android:fontFamily="sans-serif"
                 android:text="Local"
                 android:textAlignment="center"
@@ -82,24 +79,34 @@
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tvTime"
+                app:layout_constraintBottom_toTopOf="@+id/cvTime"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline1"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvTime"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvTime"
                 android:layout_width="wrap_content"
-                app:layout_constraintWidth_percent="0.4"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:ellipsize="end"
-                android:text="\FINALIZADO"
-                android:textColor="@color/black"
-                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintStart_toStartOf="@+id/guideline1" />
+                app:layout_constraintStart_toStartOf="@+id/guideline1"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintWidth_percent="0.4"
+                app:cardBackgroundColor="@color/fin"
+                >
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="2dp"
+                    android:text="\FINALIZADO"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                     />
+            </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"
@@ -113,7 +120,6 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:adjustViewBounds="false"
-                android:clickable="true"
                 android:src="@drawable/escudonull"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -123,7 +129,6 @@
                 android:id="@+id/tvAwayTeam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
                 android:fontFamily="sans-serif"
                 android:maxWidth="140dp"
                 android:text="Visitante"

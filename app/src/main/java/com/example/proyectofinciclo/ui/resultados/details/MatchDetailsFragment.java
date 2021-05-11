@@ -1,4 +1,4 @@
-package com.example.proyectofinciclo.ui.resultados;
+package com.example.proyectofinciclo.ui.resultados.details;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +18,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.timelineprueba.LoadImage;
+import com.example.proyectofinciclo.ui.resultados.CalendarioViewModel;
+import com.example.proyectofinciclo.ui.resultados.ResulsAdapter;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
@@ -32,7 +34,7 @@ public class MatchDetailsFragment extends Fragment {
     public TextView tvTime,tvResul;
     public TextView txthome;
     public TextView txtaway;
-    public ImageView awayimg,homeimg;;
+    public ImageView awayimg,homeimg;
 
     public static MatchDetailsFragment newInstance() {
         return new MatchDetailsFragment();

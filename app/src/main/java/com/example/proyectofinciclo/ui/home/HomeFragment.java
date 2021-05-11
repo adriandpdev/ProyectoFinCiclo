@@ -1,5 +1,6 @@
 package com.example.proyectofinciclo.ui.home;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,11 +9,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -48,6 +51,8 @@ public class HomeFragment extends Fragment {
     private CardView btntw, btnig;
     private Button btnnews;
     private HorizontalScrollView hsv;
+    private ProgressDialog progressDialog = null;
+
 
 
 
@@ -82,6 +87,10 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         //homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        ConstraintLayout ll = view.findViewById(R.id.linearLayout2);
+        ll.setVisibility(View.GONE);
+        ProgressBar pgloading = view.findViewById(R.id.pgloading);
+
 
         recyclerView = view.findViewById(R.id.rvHomeResul);
         btnig = view.findViewById(R.id.cardViewig);
@@ -128,18 +137,13 @@ public class HomeFragment extends Fragment {
                         cv1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                NewsDetailsFragment ndf=new NewsDetailsFragment();
                                 Bundle data = new Bundle();
                                 data.putString("id",news.get(0).getId());
                                 data.putString("title",news.get(0).getTitle());
                                 data.putString("desc",news.get(0).getDesc());
                                 data.putString("date", finalFormateddate);
                                 data.putString("img",news.get(0).getImg());
-                                ndf.setArguments(data);
-                                getActivity().getSupportFragmentManager().beginTransaction()
-                                        .replace(R.id.nav_host_fragment,ndf)
-                                        .addToBackStack(null)
-                                        .commit();
+                                Navigation.findNavController(view).navigate(R.id.newsDetailsFragment, data);
                             }
                         });
 
@@ -152,13 +156,28 @@ public class HomeFragment extends Fragment {
                         new LoadImage(img2).execute(imageHttpAddressaway2);
                         title2.setText(news.get(1).getTitle());
                         Date bddate2 = null;
+                        String formateddate2 = null;
                         try {
-                            bddate2 = sf.parse(news.get(0).getDate()+"+02:00");
+                            bddate2 = sf.parse(news.get(1).getDate()+"+02:00");
                             String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(bddate2);
-                            date2.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+                            formateddate2 =fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length());
+                            date2.setText(formateddate2);
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
+                        String finalFormateddate2 = formateddate2;
+                        cv2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Bundle data = new Bundle();
+                                data.putString("id",news.get(1).getId());
+                                data.putString("title",news.get(1).getTitle());
+                                data.putString("desc",news.get(1).getDesc());
+                                data.putString("date", finalFormateddate2);
+                                data.putString("img",news.get(1).getImg());
+                                Navigation.findNavController(view).navigate(R.id.newsDetailsFragment, data);
+                            }
+                        });
 
                         // Noticia 3
                         CardView cv3 = view.findViewById(R.id.cardView3);
@@ -169,13 +188,28 @@ public class HomeFragment extends Fragment {
                         new LoadImage(img3).execute(imageHttpAddressaway3);
                         title3.setText(news.get(2).getTitle());
                         Date bddate3 = null;
+                        String formateddate3 = null;
                         try {
-                            bddate3 = sf.parse(news.get(0).getDate()+"+02:00");
+                            bddate3 = sf.parse(news.get(2).getDate()+"+02:00");
                             String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(bddate3);
-                            date3.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+                            formateddate3 =fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length());
+                            date3.setText(formateddate3);
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
+                        String finalFormateddate3 = formateddate3;
+                        cv3.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Bundle data = new Bundle();
+                                data.putString("id",news.get(1).getId());
+                                data.putString("title",news.get(1).getTitle());
+                                data.putString("desc",news.get(1).getDesc());
+                                data.putString("date", finalFormateddate3);
+                                data.putString("img",news.get(1).getImg());
+                                Navigation.findNavController(view).navigate(R.id.newsDetailsFragment, data);
+                            }
+                        });
 
                         // Noticia 4
                         CardView cv4 = view.findViewById(R.id.cardView4);
@@ -186,13 +220,28 @@ public class HomeFragment extends Fragment {
                         new LoadImage(img4).execute(imageHttpAddressaway4);
                         title4.setText(news.get(3).getTitle());
                         Date bddate4 = null;
+                        String formateddate4 = null;
                         try {
-                            bddate4 = sf.parse(news.get(0).getDate()+"+02:00");
+                            bddate4 = sf.parse(news.get(3).getDate()+"+02:00");
                             String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(bddate4);
-                            date4.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+                            formateddate4 =fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length());
+                            date4.setText(formateddate4);
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
+                        String finalFormateddate4 = formateddate4;
+                        cv4.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Bundle data = new Bundle();
+                                data.putString("id",news.get(1).getId());
+                                data.putString("title",news.get(1).getTitle());
+                                data.putString("desc",news.get(1).getDesc());
+                                data.putString("date", finalFormateddate4);
+                                data.putString("img",news.get(1).getImg());
+                                Navigation.findNavController(view).navigate(R.id.newsDetailsFragment, data);
+                            }
+                        });
 
                         // Noticia 5
                         CardView cv5 = view.findViewById(R.id.cardView5);
@@ -203,13 +252,28 @@ public class HomeFragment extends Fragment {
                         new LoadImage(img5).execute(imageHttpAddressaway5);
                         title5.setText(news.get(4).getTitle());
                         Date bddate5 = null;
+                        String formateddate5 = null;
                         try {
-                            bddate5 = sf.parse(news.get(0).getDate()+"+02:00");
+                            bddate5 = sf.parse(news.get(4).getDate()+"+02:00");
                             String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(bddate5);
-                            date5.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+                            formateddate5 =fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length());
+                            date4.setText(formateddate5);
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
+                        String finalFormateddate5 = formateddate5;
+                        cv5.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Bundle data = new Bundle();
+                                data.putString("id",news.get(1).getId());
+                                data.putString("title",news.get(1).getTitle());
+                                data.putString("desc",news.get(1).getDesc());
+                                data.putString("date", finalFormateddate5);
+                                data.putString("img",news.get(1).getImg());
+                                Navigation.findNavController(view).navigate(R.id.newsDetailsFragment, data);
+                            }
+                        });
 
                     }
                 }else{
@@ -252,11 +316,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
+        pgloading.setVisibility(View.GONE);
+        ll.setVisibility(View.VISIBLE);
         return view;
     }
     public void donackbar(String mess, View v){
         Snackbar mSnackbar = Snackbar.make(v, mess, Snackbar.LENGTH_LONG);
         mSnackbar.show();
     }
+
 }

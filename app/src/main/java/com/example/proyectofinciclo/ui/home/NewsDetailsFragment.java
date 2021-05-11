@@ -1,6 +1,7 @@
 package com.example.proyectofinciclo.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.timelineprueba.LoadImage;
@@ -51,16 +53,13 @@ public class NewsDetailsFragment extends Fragment {
             btnweb.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        wvnewsFragment wnf = new wvnewsFragment();
                         Bundle data = new Bundle();
                         data.putString("id",id);
-                        wnf.setArguments(data);
-                        getActivity().getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.nav_host_fragment,wnf)
-                                .addToBackStack(null)
-                                .commit();
+                        Navigation.findNavController(view).navigate(R.id.wvnewsFragment, data);
                     }
                 });
+        }else{
+            Log.d("TAG", "onCreateView: NULL");
         }
 
 

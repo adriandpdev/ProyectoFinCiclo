@@ -1,8 +1,10 @@
-package com.example.proyectofinciclo.ui.resultados;
+package com.example.proyectofinciclo.ui.resultados.details;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.example.proyectofinciclo.ui.resultados.ClasiFragment;
 
 public class MatchDetailsAdapter extends FragmentStatePagerAdapter {
 
@@ -15,7 +17,8 @@ public class MatchDetailsAdapter extends FragmentStatePagerAdapter {
         Fragment fragment;
         switch(i) {
             case 0:
-                fragment = new CalendarioFragment();
+                fragment = new TwitterFragment();
+                //"https://twitter.com/search?q=(%23%40 "+ hastag +")%20(from%3A"+ cuenta +")%20until%3A"+ date +"%20since%3A "+ date +"&src=typed_query
                 break;
             case 1:
                 fragment = new ClasiFragment();

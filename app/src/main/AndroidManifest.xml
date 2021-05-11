@@ -21,15 +21,15 @@
 
         <activity
             android:name=".timelineprueba.TimeLinePrueba"
-            android:label="@string/title_resultados"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoAB">
+
         </activity>
         <activity
             android:name=".IntroActivity"
@@ -45,7 +45,13 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".ui.resultados.details.MatchDetailsActivity"
             android:theme="@style/AppTheme"
             android:configChanges="orientation"
             android:screenOrientation="portrait">

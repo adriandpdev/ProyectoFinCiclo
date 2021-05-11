@@ -1,6 +1,7 @@
 package com.example.proyectofinciclo.ui.resultados;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,13 +12,12 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.models.partido;
 import com.example.proyectofinciclo.timelineprueba.LoadImage;
+import com.example.proyectofinciclo.ui.resultados.details.MatchDetailsActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -79,7 +79,6 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         // Formato a fecha y hora
-        final NavController navController = Navigation.findNavController(holder.view);
         SimpleDateFormat sf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z", Locale.ENGLISH);
         sf.setLenient(true);
         Date date = null;
@@ -118,7 +117,7 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
         holder.txthome.setText(mDataset.get(position).getLoc());
         holder.txtaway.setText(mDataset.get(position).getVis());
         // Onclic cardview
-        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+        holder.mCardView.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
@@ -128,7 +127,10 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
                 bundle.putString("loc", mDataset.get(position).getLoc());
                 bundle.putString("vis", mDataset.get(position).getVis());
                 bundle.putString("estadio", mDataset.get(position).getEstadio());
-                navController.navigate(R.id.fragment_details_match);
+
+                Intent intent = new Intent(view.getContext(), MatchDetailsActivity.class);
+                intent.putExtras(bundle);
+                view.getContext().startActivity(intent);
             }
         });
         if(mDataset.size()==position-1){

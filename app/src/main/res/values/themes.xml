@@ -6,23 +6,33 @@
         <item name="tabSelectedTextColor">@color/white</item>
         <item name="tabTextColor">@color/white</item>
 
-
-
     </style>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">@color/red</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/gr</item>
+        <item name="colorSecondary">@color/or</item>
         <item name="colorSecondaryVariant">@color/pu</item>
-        <item name="colorOnSecondary">@color/or</item>
+        <item name="colorOnSecondary">@color/gr</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnPrimary</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
-
+    </style>
+    <style name="AppThemeNoAB" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/or</item>
+        <item name="colorSecondaryVariant">@color/pu</item>
+        <item name="colorOnSecondary">@color/gr</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <!-- Customize your theme here. -->
 
     </style>
     <style name="SplashTheme" parent="AppTheme">

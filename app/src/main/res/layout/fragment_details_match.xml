@@ -5,7 +5,7 @@
     android:id="@+id/fragment_details_match"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.resultados.MatchDetailsFragment">
+    tools:context=".ui.resultados.details.MatchDetailsFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvResul"
@@ -70,24 +70,33 @@
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tvTime"
+                app:layout_constraintBottom_toTopOf="@+id/cvTime"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline1"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvTime"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:ellipsize="end"
-                android:text="\FINALIZADO"
-                android:textColor="@color/black"
-                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline1"
-                app:layout_constraintWidth_percent="0.4" />
+                android:layout_marginBottom="8dp"
+                app:layout_constraintWidth_percent="0.4"
+                app:cardBackgroundColor="@color/fin">
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="2dp"
+                    android:text="\FINALIZADO"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    />
+            </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"
