@@ -1,7 +1,10 @@
 package com.example.proyectofinciclo.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.models.partido;
 import com.example.proyectofinciclo.timelineprueba.LoadImage;
+import com.example.proyectofinciclo.ui.resultados.details.MatchDetailsActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,6 +41,7 @@ public class ResulsHomeAdapter extends RecyclerView.Adapter<ResulsHomeAdapter.My
         public TextView txtaway;
         public TextView txtfecha;
         public ImageView awayimg,homeimg;
+        public CardView cvTime;
         public MyViewHolder(View v) {
             super(v);
             mCardView = (CardView) v.findViewById(R.id.cvResul);
@@ -46,6 +51,7 @@ public class ResulsHomeAdapter extends RecyclerView.Adapter<ResulsHomeAdapter.My
             awayimg = v.findViewById(R.id.ivAwayTeam);
             txthome = v.findViewById(R.id.tvHomeTeam);
             txtaway = v.findViewById(R.id.tvAwayTeam);
+            cvTime = v.findViewById(R.id.cvTime);
         }
     }
 
@@ -83,6 +89,9 @@ public class ResulsHomeAdapter extends RecyclerView.Adapter<ResulsHomeAdapter.My
                 date = sf.parse(mDataset.get(position).getFecha()+"+02:00");
                 String fecha = new SimpleDateFormat("d 'de' MMM",new Locale("es","ES")).format(date);
                 holder.tvTime.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+                holder.tvTime.setTextColor(Color.BLACK);
+                holder.cvTime.setCardBackgroundColor(Color.TRANSPARENT);
+                holder.cvTime.setCardElevation(0);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -103,7 +112,17 @@ public class ResulsHomeAdapter extends RecyclerView.Adapter<ResulsHomeAdapter.My
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("date", holder.tvTime.getText().toString());
+                bundle.putString("resul", mDataset.get(position).getGloc()+ " : "+ mDataset.get(position).getGvis());
+                bundle.putString("min", holder.tvTime.getText().toString());
+                bundle.putString("loc", mDataset.get(position).getLoc());
+                bundle.putString("vis", mDataset.get(position).getVis());
+                bundle.putString("estadio", mDataset.get(position).getEstadio());
 
+                Intent intent = new Intent(view.getContext(), MatchDetailsActivity.class);
+                intent.putExtras(bundle);
+                view.getContext().startActivity(intent);
             }
         });
     }

@@ -1,5 +1,6 @@
 package com.example.proyectofinciclo.ui.resultados.details;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,6 +22,7 @@ public class MatchDetailsActivity extends AppCompatActivity {
     public TextView txthome;
     public TextView txtaway;
     public ImageView awayimg,homeimg;
+    public CardView cvTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MatchDetailsActivity extends AppCompatActivity {
         awayimg = findViewById(R.id.ivAwayTeam);
         txthome = findViewById(R.id.tvHomeTeam);
         txtaway = findViewById(R.id.tvAwayTeam);
+        cvTime = findViewById(R.id.cvTime);
 
         tvResul.setText(getIntent().getExtras().getString("resul"));
         tvTime.setText(getIntent().getExtras().getString("min"));
@@ -44,6 +47,18 @@ public class MatchDetailsActivity extends AppCompatActivity {
         new LoadImage(homeimg).execute("https://res.adriandiarteprieto.tk/escudos/"+imageHttpAddresshomeloc+".png");
         String imageHttpAddresshomevis = getIntent().getExtras().getString("vis").replace(" ","");
         new LoadImage(awayimg).execute("https://res.adriandiarteprieto.tk/escudos/"+imageHttpAddresshomevis+".png");
+
+        // Cargar resultado
+        if(getIntent().getExtras().getString("resul").equals("null : null")){
+            tvResul.setVisibility(View.INVISIBLE);
+            tvTime.setText("Estadio "+getIntent().getExtras().getString("estadio"));
+            tvTime.setTextColor(Color.BLACK);
+            cvTime.setCardBackgroundColor(Color.TRANSPARENT);
+            cvTime.setCardElevation(0);
+        }else{
+            tvResul.setText(getIntent().getExtras().getString("resul"));
+            tvTime.setText(getIntent().getExtras().getString("min"));
+        }
 
         MatchDetailsAdapter matchDetailsAdapter = new MatchDetailsAdapter(getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.viewPager);

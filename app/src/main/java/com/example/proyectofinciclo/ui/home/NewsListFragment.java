@@ -69,4 +69,5 @@ public class NewsListFragment extends Fragment {
         Snackbar mSnackbar = Snackbar.make(v, mess, Snackbar.LENGTH_LONG);
         mSnackbar.show();
     }
+
 }

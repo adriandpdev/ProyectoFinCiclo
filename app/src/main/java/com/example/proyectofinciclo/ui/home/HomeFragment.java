@@ -1,6 +1,5 @@
 package com.example.proyectofinciclo.ui.home;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,9 +50,6 @@ public class HomeFragment extends Fragment {
     private CardView btntw, btnig;
     private Button btnnews;
     private HorizontalScrollView hsv;
-    private ProgressDialog progressDialog = null;
-
-
 
 
     @Override
@@ -70,7 +66,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.twFragment);
-
             }
         });
         btnig.setOnClickListener(new View.OnClickListener() {
@@ -79,8 +74,6 @@ public class HomeFragment extends Fragment {
                 navController.navigate(R.id.igFragment);
             }
         });
-
-
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -91,7 +84,6 @@ public class HomeFragment extends Fragment {
         ll.setVisibility(View.GONE);
         ProgressBar pgloading = view.findViewById(R.id.pgloading);
 
-
         recyclerView = view.findViewById(R.id.rvHomeResul);
         btnig = view.findViewById(R.id.cardViewig);
         btntw = view.findViewById(R.id.cardViewtw);
@@ -99,9 +91,7 @@ public class HomeFragment extends Fragment {
         hsv = view.findViewById(R.id.horizontalScrollView);
 
         recyclerView.setHasFixedSize(true);
-
         ApiService apiService = ConnectionService.getApiService();
-
         Call<ResNews> callnews = apiService.getNews();
         callnews.enqueue(new Callback<ResNews>() {
             @Override

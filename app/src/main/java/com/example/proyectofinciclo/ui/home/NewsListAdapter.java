@@ -1,6 +1,7 @@
 package com.example.proyectofinciclo.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyViewHolder>{
@@ -68,13 +70,15 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         // Cargamos la noticia
         //holder.tvdesc.setText(mDataset.get(position).getDesc());
         // Cargamos la fecha
-        SimpleDateFormat sf = new SimpleDateFormat("yyyy MM dd"); // #ToDo revisar formato
+        SimpleDateFormat sf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z", Locale.ENGLISH);
         sf.setLenient(true);
         Date date = null;
+        String Formateddate = null;
         try {
-            date = sf.parse(mDataset.get(position).getDate());
-            String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM").format(date);
-            holder.tvdate.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
+            date = sf.parse(mDataset.get(position).getDate()+"+02:00");
+            String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(date);
+            Formateddate = fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length());
+            holder.tvdate.setText(Formateddate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -82,10 +86,18 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         String imageHttpAddress = mDataset.get(position).getImg();
         new LoadImage(holder.imgnews).execute(imageHttpAddress);
         // Añadimos la función al hacer click
+        Date finalDate = date;
+        String finalFormateddate = Formateddate;
         holder.imgnews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // #ToDo ir a noticia individual
+                Intent intent = new Intent(context, NewsDetailsActivity.class);
+                intent.putExtra("id",mDataset.get(position).getId());
+                intent.putExtra("title",mDataset.get(position).getTitle());
+                intent.putExtra("desc",mDataset.get(position).getDesc());
+                intent.putExtra("date", finalFormateddate);
+                intent.putExtra("img",mDataset.get(position).getImg());
+                context.startActivity(intent);
             }
         });
     }

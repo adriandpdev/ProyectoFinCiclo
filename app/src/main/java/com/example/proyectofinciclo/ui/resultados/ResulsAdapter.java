@@ -2,6 +2,7 @@ package com.example.proyectofinciclo.ui.resultados;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -41,6 +42,7 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
         public TextView txtaway;
         public TextView txtfecha;
         public ImageView awayimg,homeimg;
+        public CardView cvTime;
         public View view;
         public MyViewHolder(View v) {
             super(v);
@@ -53,6 +55,7 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
             txtfecha = v.findViewById(R.id.tvdate);
             txthome = v.findViewById(R.id.tvHomeTeam);
             txtaway = v.findViewById(R.id.tvAwayTeam);
+            cvTime = v.findViewById(R.id.cvTime);
         }
     }
 
@@ -107,6 +110,9 @@ public class ResulsAdapter extends RecyclerView.Adapter<ResulsAdapter.MyViewHold
                 holder.tvResul.setVisibility(View.INVISIBLE);
             }
             holder.tvTime.setText("Estadio "+mDataset.get(position).getEstadio());
+            holder.tvTime.setTextColor(Color.BLACK);
+            holder.cvTime.setCardBackgroundColor(Color.TRANSPARENT);
+            holder.cvTime.setCardElevation(0);
         }
         // Cargar escudos
         String imageHttpAddresshome = mDataset.get(position).getLoc().replace(" ","");

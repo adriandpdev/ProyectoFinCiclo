@@ -11,8 +11,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectofinciclo.Services.ConnectionService;
-import com.example.proyectofinciclo.models.user;
-import com.example.proyectofinciclo.res.PetLogin;
+import com.example.proyectofinciclo.res.PetRegister;
 import com.example.proyectofinciclo.res.ResUser;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -20,38 +19,41 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
     private static Context context;
+    public String user="", pass="";
     public Button btnlogin, btnregister;
-    public EditText txtuser, txtpass;
+    public EditText txtuser, txtpass, txtemail,txtsocio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        btnlogin = findViewById(R.id.btn_iniciar_sesion);
+        setContentView(R.layout.activity_register);
+        btnlogin = findViewById(R.id.btn_login);
         btnlogin.setOnClickListener(this);
         btnregister = findViewById(R.id.btn_register);
         btnregister.setOnClickListener(this);
         txtuser = findViewById(R.id.et_user);
         txtpass= findViewById(R.id.et_contrasena);
+        txtemail = findViewById(R.id.et_email);
+        txtsocio= findViewById(R.id.et_socio);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_iniciar_sesion:
-                if((!txtuser.getText().toString().equals(""))&&(!txtpass.getText().toString().equals(""))) {
+            case R.id.btn_register:
+                if((!txtuser.getText().toString().equals(""))&&(!txtpass.getText().toString().equals(""))&&(!txtemail.getText().toString().equals(""))&&(!txtsocio.getText().toString().equals(""))) {
                     ApiService restClient = ConnectionService.getApiService();
-                    PetLogin pLogin = new PetLogin(txtuser.getText().toString(), txtpass.getText().toString());
-                    Call<ResUser> call = restClient.getLogin(pLogin);
+                    PetRegister pRegister = new PetRegister(txtuser.getText().toString(), txtpass.getText().toString(),txtemail.getText().toString(), txtsocio.getText().toString());
+                    Call<ResUser> call = restClient.getRegister(pRegister);
                     call.enqueue(new Callback<ResUser>() {
                         @Override
                         public void onResponse(Call<ResUser> call, Response<ResUser> response) {
                             if (response.code()==200) {
                                 ResUser res = response.body();
                                 if(res.getEstado()==200){
-                                    guardarsesion(res.getUser());
+                                    guardarsesion();
                                     Intent intent = new Intent(v.getContext(), MainActivity.class);
                                     startActivity(intent);
                                     finish();
@@ -73,11 +75,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     donackbar("Rellena todos los campos", v);
                 }
                 break;
-            case R.id.btn_olvidepass:
-                donackbar("Contacte con administración", v);
-                    break;
-            case R.id.btn_register:
-                Intent intent = new Intent(v.getContext(), RegisterActivity.class);
+            case R.id.btn_login:
+                Intent intent = new Intent(v.getContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();
                 break;
@@ -87,13 +86,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Snackbar mSnackbar = Snackbar.make(v, mess, Snackbar.LENGTH_LONG);
         mSnackbar.show();
     }
-    public void guardarsesion(user user){
-        SharedPreferences ShPref=getSharedPreferences("session", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor=ShPref.edit();
+    public void guardarsesion(){
+        SharedPreferences preferencias=getSharedPreferences("session", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=preferencias.edit();
         editor.putString("user", txtuser.getText().toString());
         editor.putString("pass", txtpass.getText().toString());
-        editor.putString("socio", user.getSocio());
-        editor.putString("email", user.getEmail());
+        editor.putString("email", txtemail.getText().toString());
+        editor.putString("socio", txtsocio.getText().toString());
         editor.commit();
     }
 

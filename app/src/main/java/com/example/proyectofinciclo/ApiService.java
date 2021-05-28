@@ -1,6 +1,7 @@
 package com.example.proyectofinciclo;
 
 import com.example.proyectofinciclo.res.PetLogin;
+import com.example.proyectofinciclo.res.PetRegister;
 import com.example.proyectofinciclo.res.ResCalendario;
 import com.example.proyectofinciclo.res.ResClasi;
 import com.example.proyectofinciclo.res.ResNews;
@@ -37,6 +38,9 @@ public interface ApiService {
             @Body PetLogin body
     );
 
-    @POST("register")
-    Call<ResUser> getRegister();
+    @Headers({"Accept: application/json"})
+    @POST("auth/register")
+    Call<ResUser> getRegister(
+            @Body PetRegister body
+    );
 }
