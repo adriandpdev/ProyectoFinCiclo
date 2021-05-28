@@ -53,31 +53,9 @@ public class PlantillaAdapter extends RecyclerView.Adapter<PlantillaAdapter.MyVi
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        // Cargamos el nombre
-
         // Cargamos la foto
         String imageHttpAddress = mDataset.get(position).getImg();
         new LoadImage(holder.imgjugador).execute("https://res.adriandiarteprieto.tk/"+imageHttpAddress+".png");
-        holder.imgjugador.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /*
-                String currentValue = mDataset.get(position).getName();
-
-                Intent intent = new Intent(context, detailsActivity.class);
-                intent.putExtra("position", mDataset.get(position).getEstadioId());
-                context.startActivity(intent);
-                */
-
-
-                /*
-                androidx.fragment.app.Fragment nuevoFragmento = new EstadioInvFragment(mDataset.get(position).getEstadioId());
-                transaction = ((MainActivity) context).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameLayout, nuevoFragmento);
-                transaction.addToBackStack(null);
-                transaction.commit();*/
-            }
-        });
     }
 
     @Override

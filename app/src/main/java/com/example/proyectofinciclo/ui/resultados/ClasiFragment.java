@@ -48,8 +48,8 @@ public class ClasiFragment extends Fragment {
                 if (response.code()==200) {
                     ResClasi res = response.body();
                     if(res.getEstado()!=200){
-                        donackbar("Code: " + response.code()+", Estado: "+res.getMensaje(), view );
-                        return;
+                        donackbar("Code: " + response.code() +
+                            ", Estado: "+res.getMensaje(), view );
                     }else if(res.getEstado()==200){
                         clasiAdapter = new ClasiAdapter(res.getEquipos(),getContext());
                         recyclerView.setAdapter(clasiAdapter);

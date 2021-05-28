@@ -1,7 +1,6 @@
 package com.example.proyectofinciclo.ui.plantilla;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,6 @@ import retrofit2.Response;
 
 public class PlantillaFragment extends Fragment {
 
-    private PlantillaViewModel mViewModel;
     private RecyclerView recyclerView;
     private PlantillaAdapter userAdapter;
     private List<jugador> resultadoSQL;
