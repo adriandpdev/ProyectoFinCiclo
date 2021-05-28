@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.proyectofinciclo.R;
-import com.example.proyectofinciclo.timelineprueba.TweetsAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 import twitter4j.ResponseList;
@@ -23,7 +22,6 @@ public class ResultadosFragment extends Fragment {
 
     String[] tweets;
     ResponseList<Status> statuses;
-    private TweetsAdapter tweetsAdapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager llm;
     public static Context context;

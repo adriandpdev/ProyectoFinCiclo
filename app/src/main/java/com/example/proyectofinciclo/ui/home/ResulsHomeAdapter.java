@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.models.partido;
-import com.example.proyectofinciclo.timelineprueba.LoadImage;
+import com.example.proyectofinciclo.Services.LoadImage;
 import com.example.proyectofinciclo.ui.resultados.details.MatchDetailsActivity;
 
 import java.text.ParseException;
@@ -79,7 +79,7 @@ public class ResulsHomeAdapter extends RecyclerView.Adapter<ResulsHomeAdapter.My
         // Cargar resultado
         if(mDataset.get(position).getGloc()!=null&&mDataset.get(position).getGloc()!=null){
             holder.tvResul.setText(mDataset.get(position).getGloc()+ " : "+ mDataset.get(position).getGvis());
-            holder.tvTime.setText("FINALIZADO"); // #ToDo cambiar al minuto de partido
+            holder.tvTime.setText(mDataset.get(position).getMin());
         }else{
             // Formato a fecha y hora
             SimpleDateFormat sf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z", Locale.ENGLISH);

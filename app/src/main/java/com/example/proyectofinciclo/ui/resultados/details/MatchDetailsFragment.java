@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.proyectofinciclo.R;
-import com.example.proyectofinciclo.timelineprueba.LoadImage;
+import com.example.proyectofinciclo.Services.LoadImage;
 import com.example.proyectofinciclo.ui.resultados.CalendarioViewModel;
 import com.example.proyectofinciclo.ui.resultados.ResulsAdapter;
 import com.google.android.material.snackbar.Snackbar;

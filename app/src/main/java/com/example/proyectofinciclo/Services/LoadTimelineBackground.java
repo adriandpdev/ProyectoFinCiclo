@@ -1,10 +1,8 @@
-package com.example.proyectofinciclo.timelineprueba;
+package com.example.proyectofinciclo.Services;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.List;
 

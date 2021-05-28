@@ -27,7 +27,7 @@ import com.example.proyectofinciclo.Services.ConnectionService;
 import com.example.proyectofinciclo.models.news;
 import com.example.proyectofinciclo.res.ResCalendario;
 import com.example.proyectofinciclo.res.ResNews;
-import com.example.proyectofinciclo.timelineprueba.LoadImage;
+import com.example.proyectofinciclo.Services.LoadImage;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.ParseException;

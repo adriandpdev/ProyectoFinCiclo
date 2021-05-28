@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.models.equipo;
-import com.example.proyectofinciclo.timelineprueba.LoadImage;
+import com.example.proyectofinciclo.Services.LoadImage;
 
 import java.util.List;
 

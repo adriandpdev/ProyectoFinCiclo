@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.NewsListFragment">
 
-    <!-- #Todo Ajustar ancho de imagenes-->
+
     <androidx.recyclerview.widget.RecyclerView
 
         android:id="@+id/rv_news"

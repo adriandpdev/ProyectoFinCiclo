@@ -10,13 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectofinciclo.ui.perfil.PerfilViewModel;
 
-public class webviewActivity extends AppCompatActivity {
+public class WebViewActivity extends AppCompatActivity {
 
     private PerfilViewModel mViewModel;
     private WebView webView;
     private String id;
-    public static webviewActivity newInstance() {
-        return new webviewActivity();
+    public static WebViewActivity newInstance() {
+        return new WebViewActivity();
     }
 
     protected void onCreate(Bundle savedInstanceState) {

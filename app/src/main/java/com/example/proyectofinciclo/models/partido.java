@@ -2,7 +2,7 @@ package com.example.proyectofinciclo.models;
 
 public class partido {
 
-    private String fecha, gloc, gvis, loc, vis, estadio;
+    private String fecha, gloc, gvis, loc, vis, estadio,has, min;
 
     public String getFecha() {
         return fecha;
@@ -51,4 +51,18 @@ public class partido {
     public void setEstadio(String estadio) {
         this.estadio = estadio;
     }
+
+    public String getHas() {
+        return has;
+    }
+
+    public void setHas(String has) {
+        this.has = has;
+    }
+
+    public String getMin() {
+        return min;
+    }
+
+    public void setMin(String min) { this.min = min; }
 }

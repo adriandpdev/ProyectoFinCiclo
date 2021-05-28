@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectofinciclo.R;
-import com.example.proyectofinciclo.timelineprueba.LoadImage;
-import com.example.proyectofinciclo.webviewActivity;
+import com.example.proyectofinciclo.Services.LoadImage;
+import com.example.proyectofinciclo.WebViewActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 public class NewsDetailsActivity extends AppCompatActivity{
@@ -50,7 +50,7 @@ public class NewsDetailsActivity extends AppCompatActivity{
             btnweb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), webviewActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
                     intent.putExtra("id",id);
                     startActivity(intent);
                 }

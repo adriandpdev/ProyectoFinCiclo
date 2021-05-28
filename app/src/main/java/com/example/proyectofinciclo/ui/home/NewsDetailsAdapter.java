@@ -13,12 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.models.news;
-import com.example.proyectofinciclo.timelineprueba.LoadImage;
+import com.example.proyectofinciclo.Services.LoadImage;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 public class NewsDetailsAdapter extends RecyclerView.Adapter<NewsDetailsAdapter.MyViewHolder>{
@@ -71,12 +72,12 @@ public class NewsDetailsAdapter extends RecyclerView.Adapter<NewsDetailsAdapter.
             // Cargamos la noticia
             holder.tvdesc.setText(mDataset.get(position).getDesc());
             // Cargamos la fecha
-            SimpleDateFormat sf = new SimpleDateFormat("yyyy MM dd"); // #ToDo revisar formato
+            SimpleDateFormat sf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z", Locale.ENGLISH);
             sf.setLenient(true);
             Date date = null;
             try {
-                date = sf.parse(mDataset.get(position).getDate());
-                String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM").format(date);
+                date = sf.parse(mDataset.get(position).getDate()+"+02:00");
+                String fecha = new SimpleDateFormat("EEEE, d 'de' MMMM",new Locale("es","ES")).format(date);
                 holder.tvdate.setText(fecha.toUpperCase().charAt(0) + fecha.substring(1,fecha.length()));
             } catch (ParseException e) {
                 e.printStackTrace();

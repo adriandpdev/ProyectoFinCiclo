@@ -18,7 +18,6 @@ public class MatchDetailsAdapter extends FragmentStatePagerAdapter {
         switch(i) {
             case 0:
                 fragment = new TwitterFragment();
-                //"https://twitter.com/search?q=(%23%40 "+ hastag +")%20(from%3A"+ cuenta +")%20until%3A"+ date +"%20since%3A "+ date +"&src=typed_query
                 break;
             case 1:
                 fragment = new ClasiFragment();
@@ -37,14 +36,14 @@ public class MatchDetailsAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 1;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "Twitter";
+                return "";
             case 1:
                 return "Previa";
             case 2:

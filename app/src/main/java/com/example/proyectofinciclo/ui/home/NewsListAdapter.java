@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofinciclo.R;
 import com.example.proyectofinciclo.models.news;
-import com.example.proyectofinciclo.timelineprueba.LoadImage;
+import com.example.proyectofinciclo.Services.LoadImage;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

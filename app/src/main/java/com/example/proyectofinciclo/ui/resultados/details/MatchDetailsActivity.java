@@ -1,6 +1,7 @@
 package com.example.proyectofinciclo.ui.resultados.details;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,12 +9,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.proyectofinciclo.R;
-import com.example.proyectofinciclo.timelineprueba.LoadImage;
+import com.example.proyectofinciclo.Services.LoadImage;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
 
 public class MatchDetailsActivity extends AppCompatActivity {
 
@@ -50,7 +49,14 @@ public class MatchDetailsActivity extends AppCompatActivity {
 
         // Cargar resultado
         if(getIntent().getExtras().getString("resul").equals("null : null")){
-            tvResul.setVisibility(View.INVISIBLE);
+            if(!getIntent().getExtras().getString("date").equals("0 : 00")){
+                tvResul.setText(getIntent().getExtras().getString("date"));
+                tvResul.setTextSize(20);
+                tvResul.setTypeface(Typeface.DEFAULT);
+            }else{
+                tvResul.setVisibility(View.INVISIBLE);
+            }
+            tvResul.setText(getIntent().getExtras().getString("date"));
             tvTime.setText("Estadio "+getIntent().getExtras().getString("estadio"));
             tvTime.setTextColor(Color.BLACK);
             cvTime.setCardBackgroundColor(Color.TRANSPARENT);
@@ -60,12 +66,13 @@ public class MatchDetailsActivity extends AppCompatActivity {
             tvTime.setText(getIntent().getExtras().getString("min"));
         }
 
+        /*
         MatchDetailsAdapter matchDetailsAdapter = new MatchDetailsAdapter(getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(matchDetailsAdapter);
 
         TabLayout tabLayout = findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);*/
 
     }
 

@@ -1,16 +1,18 @@
 package com.example.proyectofinciclo.models;
 
 public class resul {
-    public resul(String date, String homegol, String awaygol, String homename, String awayname, String penals) {
+    public resul(String date, String homegol, String awaygol, String homename, String awayname, String penals, String has, String min) {
         setDate(date);
         setHomegol(homegol);
         setAwaygol(awaygol);
         setHomename(homename);
         setAwayname(awayname);
         setPenals(penals);
+        setHas(has);
+        setMin(min);
     }
 
-    private String date, homegol, awaygol, homename, awayname, penals;
+    private String date, homegol, awaygol, homename, awayname, penals, has, min;
 
     public String getDate() {
         return date;
@@ -59,5 +61,19 @@ public class resul {
     public void setPenals(String penals) {
         this.penals = penals;
     }
+
+    public String getHas() {
+        return has;
+    }
+
+    public void setHas(String has) {
+        this.has = has;
+    }
+
+    public String getMin() {
+        return min;
+    }
+
+    public void setMin(String min) { this.min = min; }
 
 }
